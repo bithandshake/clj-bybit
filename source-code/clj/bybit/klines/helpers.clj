@@ -56,8 +56,6 @@
   (* limit (interval-duration interval)))
 
 (defn query-from
-  ; WARNING! NON-PUBLIC! DO NOT USE!
-  ;
   ; @param (string) interval
   ;  "1", "3", "5", "15", "30", "60", "120", "240", "360", "720", "D", "M", "W"
   ; @param (integer) limit
