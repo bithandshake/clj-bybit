@@ -2,7 +2,7 @@
 ;; -- Namespace ---------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
 
-(ns bybit.wallet.sample
+(ns bybit.kline.list.sample
     (:require [bybit.api :as bybit]))
 
 
@@ -10,6 +10,6 @@
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
 
-(defn request-my-wallet-balance!
+(defn request-my-kline-list!
   []
-  (bybit/request-wallet-balance! {:api-key "..." :api-secret "..."}))
+  (bybit/request-kline-list! {:interval "1" :limit 60 :symbol "ETHUSDT"}))

@@ -3,88 +3,76 @@
 ;; ----------------------------------------------------------------------------
 
 (ns bybit.api
-    (:require [bybit.account.request  :as account.request]
-              [bybit.account.uri      :as account.uri]
-              [bybit.klines.errors    :as klines.errors]
-              [bybit.klines.helpers   :as klines.helpers]
-              [bybit.klines.request   :as klines.request]
-              [bybit.klines.uri       :as klines.uri]
-              [bybit.order.request    :as order.request]
-              [bybit.order.uri        :as order.uri]
-              [bybit.position.request :as position.request]
-              [bybit.position.uri     :as position.uri]
-              [bybit.request.sign     :as request.sign]
-              [bybit.response.errors  :as response.errors]
-              [bybit.response.helpers :as response.helpers]
-              [bybit.uri.config       :as uri.config]
-              [bybit.wallet.request   :as wallet.request]
-              [bybit.wallet.uri       :as wallet.uri]))
+    (:require [bybit.core.request.sign      :as core.request.sign]
+              [bybit.core.response.errors   :as core.response.errors]
+              [bybit.core.response.helpers  :as core.response.helpers]
+              [bybit.core.uri.config        :as core.uri.config]
+              [bybit.kline.list.request     :as kline.list.request]
+              [bybit.kline.list.uri         :as kline.list.uri]
+              [bybit.order.create.headers   :as order.create.headers]
+              [bybit.order.create.request   :as order.create.request]
+              [bybit.order.create.uri       :as order.create.uri]
+              [bybit.position.list.headers  :as position.list.headers]
+              [bybit.position.list.request  :as position.list.request]
+              [bybit.position.list.uri      :as position.list.uri]
+              [bybit.wallet.balance.headers :as wallet.balance.headers]
+              [bybit.wallet.balance.request :as wallet.balance.request]
+              [bybit.wallet.balance.uri     :as wallet.balance.uri]))
 
 
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
 
-; bybit.account.request
-(def request-account-api-key! account.request/request-account-api-key!)
+; bybit.core.uri.config
+(def API-ADDRESS      core.uri.config/API-ADDRESS)
+(def TEST-API-ADDRESS core.uri.config/TEST-API-ADDRESS)
 
-; bybit.account.uri
-(def account-api-key-uri account.uri/account-api-key-uri)
+; bybit.core.request.sign
+(def signed-query-string core.request.sign/signed-query-string)
+(def signed-form-params  core.request.sign/signed-form-params)
+(def POST-form-params    core.request.sign/POST-form-params)
 
-; bybit.klines.errors
-(def kline-list-data->time-error  klines.errors/kline-list-data->time-error)
-(def kline-list-data->limit-error klines.errors/kline-list-data->limit-error)
-(def kline-list-data->error       klines.errors/kline-list-data->error)
-(def kline-list-data<-error       klines.errors/kline-list-data<-error)
+; bybit.core.response.errors
+(def response-body->error?               core.response.errors/response-body->error?)
+(def response-body->invalid-api-details? core.response.errors/response-body->invalid-api-details?)
 
-; bybit.klines.helpers
-(def interval-duration       klines.helpers/interval-duration)
-(def close-time              klines.helpers/close-time)
-(def query-duration          klines.helpers/query-duration)
-(def query-from              klines.helpers/query-from)
-(def receive-kline-item      klines.helpers/receive-kline-item)
-(def receive-kline-list-data klines.helpers/receive-kline-list-data)
+; bybit.core.response.helpers
+(def time-now->epoch-ms     core.response.helpers/time-now->epoch-ms)
+(def GET-response->body     core.response.helpers/GET-response->body)
+(def POST-response->headers core.response.helpers/POST-response->headers)
+(def POST-response->body    core.response.helpers/POST-response->body)
 
-; bybit.klines.request
-(def request-kline-list! klines.request/request-kline-list!)
+; bybit.kline.list.request
+(def request-kline-list! kline.list.request/request-kline-list!)
 
-; bybit.klines.uri
-(def kline-list-uri      klines.uri/kline-list-uri)
-(def kline-list-uri-list klines.uri/kline-list-uri-list)
+; bybit.kline.list.uri
+(def kline-list-uri      kline.list.uri/kline-list-uri)
+(def kline-list-uri-list kline.list.uri/kline-list-uri-list)
 
-; bybit.order.request
-(def request-order-create! order.request/request-order-create!)
+; bybit.order.create.headers
+(def position-list-headers order.create.headers/order-create-headers)
 
-; bybit.order.uri
-(def order-create-uri order.uri/order-create-uri)
+; bybit.order.create.request
+(def request-order-create! order.create.request/request-order-create!)
 
-; bybit.position.request
-(def request-position-list! position.request/request-position-list!)
+; bybit.order.create.uri
+(def order-create-uri order.create.uri/order-create-uri)
 
-; bybit.position.uri
-(def position-list-uri position.uri/position-list-uri)
+; bybit.position.list.headers
+(def position-list-headers position.list.headers/position-list-headers)
 
-; bybit.request.sign
-(def signed-query-string bybit.request.sign/signed-query-string)
-(def signed-form-params  bybit.request.sign/signed-form-params)
-(def POST-form-params    bybit.request.sign/POST-form-params)
+; bybit.position.list.request
+(def request-position-list! position.list.request/request-position-list!)
 
-; bybit.response.helpers
-(def time-now->epoch-ms     response.helpers/time-now->epoch-ms)
-(def GET-response->body     response.helpers/GET-response->body)
-(def POST-response->headers response.helpers/POST-response->headers)
-(def POST-response->body    response.helpers/POST-response->body)
+; bybit.position.list.uri
+(def position-list-uri position.list.uri/position-list-uri)
 
-; bybit.response.errors
-(def response-body->error?               bybit.response.errors/response-body->error?)
-(def response-body->invalid-api-details? bybit.response.errors/response-body->invalid-api-details?)
+; bybit.wallet.balance.headers
+(def wallet-balance-headers wallet.balance.headers/wallet-balance-headers)
 
-; bybit.uri.config
-(def API-ADDRESS      uri.config/API-ADDRESS)
-(def TEST-API-ADDRESS uri.config/TEST-API-ADDRESS)
+; bybit.wallet.balance.request
+(def request-wallet-balance! wallet.balance.request/request-wallet-balance!)
 
-; bybit.wallet.request
-(def request-wallet-balance! wallet.request/request-wallet-balance!)
-
-; bybit.wallet.uri
-(def wallet-balance-uri wallet.uri/wallet-balance-uri)
+; bybit.wallet.balance.uri
+(def wallet-balance-uri wallet.balance.uri/wallet-balance-uri)

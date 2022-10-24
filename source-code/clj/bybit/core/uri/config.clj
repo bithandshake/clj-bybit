@@ -2,14 +2,15 @@
 ;; -- Namespace ---------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
 
-(ns bybit.klines.sample
-    (:require [bybit.api :as bybit]))
+(ns bybit.core.uri.config)
 
 
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
 
-(defn request-my-kline-list!
-  []
-  (bybit/request-kline-list! {:interval "1" :limit 60 :symbol "ETHUSD"}))
+; @constant (string)
+(def API-ADDRESS "https://api.bybit.com")
+
+; @constant (string)
+(def TEST-API-ADDRESS "https://api-testnet.bybit.com")

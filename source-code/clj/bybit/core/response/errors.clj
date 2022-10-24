@@ -2,7 +2,7 @@
 ;; -- Namespace ---------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
 
-(ns bybit.response.errors)
+(ns bybit.core.response.errors)
 
 
 
@@ -11,23 +11,21 @@
 
 (defn response-body->error?
   ; @param (map) response-body
-  ;  {:ret-code (integer)
-  ;   :ret-msg (string)}
+  ;  {:ret-code (integer)}
   ;
   ; @usage
-  ;  (bybit/response-body->error? {...})
+  ;  (response-body->error? {...})
   ;
   ; @return (boolean)
-  [{:keys [ret-code ret-msg]}]
-  (or (not= ret-code 0)
-      (not= ret-msg "OK")))
+  [{:keys [ret-code]}]
+  (not= ret-code 0))
 
 (defn response-body->invalid-api-details?
   ; @param (map) response-body
   ;  {:ret-code (integer)}
   ;
   ; @usage
-  ;  (bybit/response-body->invalid-api-details? {...})
+  ;  (response-body->invalid-api-details? {...})
   ;
   ; @return (boolean)
   [{:keys [ret-code]}]

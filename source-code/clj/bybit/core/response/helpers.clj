@@ -2,7 +2,7 @@
 ;; -- Namespace ---------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
 
-(ns bybit.response.helpers
+(ns bybit.core.response.helpers
     (:require [mid-fruits.candy  :refer [return]]
               [mid-fruits.json   :as json]
               [mid-fruits.reader :as reader]
@@ -17,7 +17,7 @@
   ; @param (string) n
   ;
   ; @example
-  ;  (bybit/time-now->epoch-ms "1645550000.123456")
+  ;  (time-now->epoch-ms "1645550000.123456")
   ;  =>
   ;  1645550000123
   ;
@@ -37,7 +37,7 @@
   ;  {:body (string)}
   ;
   ; @example
-  ;  (bybit/GET-response->body {... :body "{\"result\":[{...},{...}]}"})
+  ;  (GET-response->body {... :body "{\"result\":[{...},{...}]}"})
   ;  =>
   ;  {:result [{...} {...}]}
   ;
@@ -51,7 +51,7 @@
   (-> (string/replace-part body #"\":" "\" ")
       (reader/string->mixed)
       (json/keywordize-keys)
-      (json/hyphenize-keys)))
+      (json/snake-case-keys)))
 
 
 
@@ -63,7 +63,7 @@
   ;  {:headers (string)}
   ;
   ; @example
-  ;  (bybit/POST-response->headers {...})
+  ;  (POST-response->headers {...})
   ;  =>
   ;  {...}
   ;
@@ -77,7 +77,7 @@
   ;  {:body (string)}
   ;
   ; @example
-  ;  (bybit/POST-response->body {...})
+  ;  (POST-response->body {...})
   ;  =>
   ;  {...}
   ;

@@ -2,10 +2,10 @@
 ;; -- Namespace ---------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
 
-(ns bybit.klines.errors
-    (:require [bybit.klines.helpers :as klines.helpers]
-              [mid-fruits.candy     :refer [return]]
-              [mid-fruits.loop      :refer [some-indexed]]))
+(ns bybit.kline.list.errors
+    (:require [bybit.kline.list.helpers :as kline.list.helpers]
+              [mid-fruits.candy         :refer [return]]
+              [mid-fruits.loop          :refer [some-indexed]]))
 
 
 
@@ -16,9 +16,6 @@
   ; @param (map) kline-list-data
   ;  {:kline-list (maps in vector)}
   ; @param (map) options
-  ;
-  ; @usage
-  ;  (bybit/kline-list-data->time-error {...} {...})
   ;
   ; @return (namespaced keyword)
   ;  :time-error/different-intervals, :time-error/time-slippage
@@ -33,7 +30,7 @@
                    ; Ha az open-time értéke nem egyenlő az előző elem open-time értékének
                    ; és a periódus hosszának összegével ...
                    (not= (+ (get-in kline-list [(dec dex) :open-time])
-                            (klines.helpers/interval-duration (:interval x)))
+                            (kline.list.helpers/interval-duration (:interval x)))
                          (:open-time x))
                    (return :time-error/time-slippage)))]
          (some-indexed f kline-list)))
@@ -43,9 +40,6 @@
   ;  {:kline-list (maps in vector)}
   ; @param (map) options
   ;  {:limit (integer)}
-  ;
-  ; @usage
-  ;  (bybit/kline-list-data->limit-error {...} {...})
   ;
   ; @return (namespaced keyword)
   ;  :limit-error/too-few-kline, :limit-error/too-many-kline
@@ -59,9 +53,6 @@
   ; @param (map) options
   ;  {:limit (integer)}
   ;
-  ; @usage
-  ;  (bybit/kline-list-data->error {...} {...})
-  ;
   ; @return (namespaced keyword)
   [kline-list-data options]
   (or (kline-list-data->time-error  kline-list-data options)
@@ -72,9 +63,6 @@
   ;  {:kline-list (maps in vector)}
   ; @param (map) options
   ;  {:limit (integer)}
-  ;
-  ; @usage
-  ;  (bybit/kline-list-data<-error {...} {...})
   ;
   ; @return (map)
   ;  {:error (namespaced keyword)}

@@ -2,7 +2,7 @@
 ;; -- Namespace ---------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
 
-(ns bybit.request.sign
+(ns bybit.core.request.sign
     (:require [mid-fruits.json    :as json]
               [mid-fruits.loop    :refer [reduce-indexed]]
               [mid-fruits.map     :as map]
@@ -20,7 +20,7 @@
   ; @param (string) api-secret
   ;
   ; @example
-  ;  (bybit/signed-query-string "..." "...")
+  ;  (signed-query-string "..." "...")
   ; =>
   ; "..."
   ;
@@ -34,7 +34,7 @@
   ; @param (string) api-secret
   ;
   ; @example
-  ;  (bybit/signed-form-params {...} "...")
+  ;  (signed-form-params {...} "...")
   ;  =>
   ;  {...}
   ;
@@ -55,7 +55,7 @@
   ;  {:api-secret (string)}
   ;
   ; @example
-  ;  (bybit/signed-form-params {...} "...")
+  ;  (signed-form-params {...} "...")
   ;  =>
   ;  {...}
   ;
