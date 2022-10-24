@@ -35,5 +35,5 @@
   ; You can use the Server Time endpoint.
   (let [timestamp    (time/epoch-ms)
         query-string (str "api_key=" api-key "&timestamp=" timestamp)
-        address      (if use-mainnet? uri.config/PRIVATE-API-ADDRESS uri.config/PRIVATE-TEST-API-ADDRESS)]
-       (str address "/account/api-key?" (request.sign/signed-query-string query-string api-secret))))
+        address      (if use-mainnet? uri.config/API-ADDRESS uri.config/TEST-API-ADDRESS)]
+       (str address "/v2/private/account/api-key?" (request.sign/signed-query-string query-string api-secret))))

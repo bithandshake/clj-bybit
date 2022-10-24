@@ -11,6 +11,8 @@
               [bybit.klines.uri       :as klines.uri]
               [bybit.order.request    :as order.request]
               [bybit.order.uri        :as order.uri]
+              [bybit.position.request :as position.request]
+              [bybit.position.uri     :as position.uri]
               [bybit.request.sign     :as request.sign]
               [bybit.response.errors  :as response.errors]
               [bybit.response.helpers :as response.helpers]
@@ -20,7 +22,7 @@
 
 
 
-;; -- Redirects ---------------------------------------------------------------
+;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
 
 ; bybit.account.request
@@ -56,6 +58,12 @@
 ; bybit.order.uri
 (def order-create-uri order.uri/order-create-uri)
 
+; bybit.position.request
+(def request-position-list! position.request/request-position-list!)
+
+; bybit.position.uri
+(def position-list-uri position.uri/position-list-uri)
+
 ; bybit.request.sign
 (def signed-query-string bybit.request.sign/signed-query-string)
 (def signed-form-params  bybit.request.sign/signed-form-params)
@@ -72,10 +80,8 @@
 (def response-body->invalid-api-details? bybit.response.errors/response-body->invalid-api-details?)
 
 ; bybit.uri.config
-(def PUBLIC-API-ADDRESS       uri.config/PUBLIC-API-ADDRESS)
-(def PUBLIC-TEST-API-ADDRESS  uri.config/PUBLIC-TEST-API-ADDRESS)
-(def PRIVATE-API-ADDRESS      uri.config/PRIVATE-API-ADDRESS)
-(def PRIVATE-TEST-API-ADDRESS uri.config/PRIVATE-TEST-API-ADDRESS)
+(def API-ADDRESS      uri.config/API-ADDRESS)
+(def TEST-API-ADDRESS uri.config/TEST-API-ADDRESS)
 
 ; bybit.wallet.request
 (def request-wallet-balance! wallet.request/request-wallet-balance!)

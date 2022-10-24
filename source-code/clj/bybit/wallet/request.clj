@@ -38,6 +38,6 @@
   [{:keys [api-key] :as request-props}]
   (let [uri           (wallet.uri/wallet-balance-uri request-props)
         response-body (-> uri clj-http.client/get response.helpers/GET-response->body)]
-       (if-not (response.errors/response-body->invalid-api-details? response-body)
+       (if-not (response.errors/response-body->error? response-body)
                (-> (map/rekey-item response-body :result :balance)
                    (merge {:api-key api-key :uri uri :time-now (time/epoch-s)})))))

@@ -27,7 +27,7 @@
   ;  {:ret-code (integer)}
   ;
   ; @usage
-  ;  (bybit/response-body->invalid-api-details? {:ret-code 0})
+  ;  (bybit/response-body->invalid-api-details? {...})
   ;
   ; @return (boolean)
   [{:keys [ret-code]}]

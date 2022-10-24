@@ -43,5 +43,5 @@
                                                     :time-in-force "GoodTillCancel"})
         response      (clj-http.client/post uri {:form-params form-params :as :x-www-form-urlencoded})
         response-body (response.helpers/POST-response->body response)]
-       (if-not (response.errors/response-body->invalid-api-details? response-body)
+       (if-not (response.errors/response-body->error? response-body)
                (println "Hello world!"))))

@@ -2,21 +2,14 @@
 ;; -- Namespace ---------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
 
-(ns bybit.uri.config)
+(ns bybit.position.sample
+    (:require [bybit.api :as bybit]))
 
 
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
 
-; @constant (string)
-;
-; @usage
-;  (bybit/API-ADDRESS)
-(def API-ADDRESS "https://api.bybit.com")
-
-; @constant (string)
-;
-; @usage
-;  (bybit/TEST-API-ADDRESS)
-(def TEST-API-ADDRESS "https://api-testnet.bybit.com")
+(defn request-my-position-list!
+  []
+  (bybit/request-position-list! {}))

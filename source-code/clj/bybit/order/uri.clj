@@ -27,5 +27,5 @@
   ;
   ; @return (string)
   [{:keys [use-mainnet?]}]
-  (let [address (if use-mainnet? uri.config/PRIVATE-API-ADDRESS uri.config/PRIVATE-TEST-API-ADDRESS)]
-       (str address "/order/create")))
+  (let [address (if use-mainnet? uri.config/API-ADDRESS uri.config/TEST-API-ADDRESS)]
+       (str address "/v2/private/order/create")))
