@@ -23,8 +23,8 @@
   ;
   ; @return (integer)
   [n]
-  (let [s  (string/before-first-occurence n ".")
-        ms (string/after-first-occurence  n ".")]
+  (let [s  (string/before-first-occurence n "." {:return? false})
+        ms (string/after-first-occurence  n "." {:return? false})]
        (reader/read-str (str s (subs ms 0 3)))))
 
 

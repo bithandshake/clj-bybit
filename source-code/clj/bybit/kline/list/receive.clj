@@ -67,5 +67,5 @@
                    low  (reader/read-str low)]
                   (-> result (assoc  :total-high (max (or total-high high) high))
                              (assoc  :total-low  (min (or total-low  low)  low))
-                             (update :kline-list vector/conj-item (receive-kline-item kline-item)))))]
+                             (update :kline-list vector/cons-item (receive-kline-item kline-item)))))]
          (reduce f (dissoc kline-list-data :kline-list) kline-list)))
