@@ -1,14 +1,9 @@
 
-;; -- Namespace ---------------------------------------------------------------
-;; ----------------------------------------------------------------------------
-
 (ns bybit.kline.list.receive
     (:require [bybit.kline.list.helpers :as kline.list.helpers]
               [mid-fruits.reader        :as reader]
               [mid-fruits.vector        :as vector]
               [time.api                 :as time]))
-
-
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
@@ -40,8 +35,8 @@
   (let [open-time (reader/read-str start)]
         ; WARNING! Az aktuális (éppen történő) periódus close-time értéke egy jövőbeni időpontra mutat!
         ; close-time (kline.list.helpers/close-time start interval)]
-       {:open-time   open-time
-       ;:close-item  close-time
+       {:open-time       open-time
+       ;:close-item      close-time
         :open-timestamp  (time/epoch-ms->timestamp-string open-time)
        ;:close-timestamp (time/epoch-ms->timestamp-string close-time)
         :close           (reader/read-str close)

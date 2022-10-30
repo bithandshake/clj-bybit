@@ -1,7 +1,4 @@
 
-;; -- Namespace ---------------------------------------------------------------
-;; ----------------------------------------------------------------------------
-
 (ns bybit.order.create.request
     (:require [bybit.core.request.sign     :as core.request.sign]
               [bybit.core.response.errors  :as core.response.errors]
@@ -9,8 +6,6 @@
               [bybit.order.create.uri      :as order.create.uri]
               [clj-http.client             :as clj-http.client]
               [mid-fruits.candy            :refer [return]]))
-
-
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------

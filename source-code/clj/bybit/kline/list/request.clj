@@ -1,7 +1,4 @@
 
-;; -- Namespace ---------------------------------------------------------------
-;; ----------------------------------------------------------------------------
-
 (ns bybit.kline.list.request
     (:require [bybit.core.response.errors  :as core.response.errors]
               [bybit.core.response.helpers :as core.response.helpers]
@@ -12,8 +9,6 @@
               [clj-http.client             :as clj-http.client]
               [mid-fruits.vector           :as vector]
               [time.api                    :as time]))
-
-
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------

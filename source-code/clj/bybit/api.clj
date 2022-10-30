@@ -1,7 +1,4 @@
 
-;; -- Namespace ---------------------------------------------------------------
-;; ----------------------------------------------------------------------------
-
 (ns bybit.api
     (:require [bybit.core.request.sign      :as core.request.sign]
               [bybit.core.response.errors   :as core.response.errors]
@@ -18,8 +15,6 @@
               [bybit.wallet.balance.headers :as wallet.balance.headers]
               [bybit.wallet.balance.request :as wallet.balance.request]
               [bybit.wallet.balance.uri     :as wallet.balance.uri]))
-
-
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------

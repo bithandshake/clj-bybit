@@ -1,17 +1,13 @@
 
-;; -- Namespace ---------------------------------------------------------------
-;; ----------------------------------------------------------------------------
-
 (ns bybit.position.list.request
     (:require [bybit.core.response.errors  :as core.response.errors]
               [bybit.core.response.helpers :as core.response.helpers]
               [bybit.position.list.headers :as position.list.headers]
+              [bybit.position.list.receive :as position.list.receive]
               [bybit.position.list.uri     :as position.list.uri]
               [clj-http.client             :as clj-http.client]
               [mid-fruits.candy            :refer [return]]
               [time.api                    :as time]))
-
-
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
@@ -45,7 +41,7 @@
   ;
   ; @return (map)
   ;  {:api-key (string)
-  ;   :position-list (vector)
+  ;   :position-list (maps in vector)
   ;   :time-now (string)
   ;   :uri (string)}
   [{:keys [api-key] :as request-props}]
@@ -55,7 +51,8 @@
         response-body (core.response.helpers/GET-response->body response)]
        (if (core.response.errors/response-body->error? response-body)
            (return response-body)
-           {:api-key       api-key
-            :uri           uri
-            :position-list (-> response-body :result :list)
-            :time-now      (time/epoch-s)})))
+           (-> {:api-key       api-key
+                :uri           uri
+                :position-list (-> response-body :result :list)
+                :time-now      (time/epoch-s)}
+               (position.list.receive/receive-position-list)))))

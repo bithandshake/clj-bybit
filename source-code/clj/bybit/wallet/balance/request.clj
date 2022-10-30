@@ -1,17 +1,13 @@
 
-;; -- Namespace ---------------------------------------------------------------
-;; ----------------------------------------------------------------------------
-
 (ns bybit.wallet.balance.request
     (:require [bybit.core.response.errors   :as core.response.errors]
               [bybit.core.response.helpers  :as core.response.helpers]
               [bybit.wallet.balance.headers :as wallet.balance.headers]
+              [bybit.wallet.balance.receive :as wallet.balance.receive]
               [bybit.wallet.balance.uri     :as wallet.balance.uri]
               [clj-http.client              :as clj-http.client]
               [mid-fruits.candy             :refer [return]]
               [time.api                     :as time]))
-
-
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
@@ -44,7 +40,8 @@
         response-body (core.response.helpers/GET-response->body response)]
        (if (core.response.errors/response-body->error? response-body)
            (return response-body)
-           {:api-key        api-key
-            :uri            uri
-            :time-now       (time/epoch-s)
-            :wallet-balance (-> response-body :result)})))
+           (-> {:api-key        api-key
+                :uri            uri
+                :time-now       (time/epoch-s)
+                :wallet-balance (-> response-body :result)}
+               (wallet.balance.receive/receive-wallet-balance)))))
