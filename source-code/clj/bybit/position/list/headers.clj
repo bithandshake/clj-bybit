@@ -1,8 +1,8 @@
 
 (ns bybit.position.list.headers
-    (:require [bybit.position.list.uri :as position.list.uri]
-              [server-fruits.hash      :as hash]
-              [time.api                :as time]))
+    (:require [bybit.core.request.headers :as core.request.headers]
+              [bybit.position.list.uri    :as position.list.uri]
+              [time.api                   :as time]))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
@@ -58,14 +58,7 @@
   ;   "X-BAPI-API-KEY" (string)
   ;   "X-BAPI-TIMESTAMP" (string)
   ;   "X-BAPI-RECV-WINDOW" (integer)}
-  [{:keys [api-key api-secret use-mainnet?] :as headers-props}]
-  ; Please make sure that your timestamp is in sync with our (bybit.com) server time.
-  ; You can use the Server Time endpoint.
+  [headers-props]
   (let [timestamp    (time/epoch-ms)
-        param-string (position-list-param-string headers-props timestamp)
-        sign         (hash/hmac-sha256 param-string api-secret)]
-       {"X-BAPI-SIGN-TYPE"   2
-        "X-BAPI-SIGN"        sign
-        "X-BAPI-API-KEY"     api-key
-        "X-BAPI-TIMESTAMP"   timestamp
-        "X-BAPI-RECV-WINDOW" 5000}))
+        param-string (position-list-param-string headers-props timestamp)]
+       (core.request.headers/GET-headers headers-props timestamp param-string)))

@@ -10,20 +10,6 @@
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
 
-(defn signed-query-string
-  ; @param (string) query-string
-  ; @param (string) api-secret
-  ;
-  ; @example
-  ;  (signed-query-string "..." "...")
-  ; =>
-  ; "..."
-  ;
-  ; @return (string)
-  [query-string api-secret]
-  (let [sign (hash/hmac-sha256 query-string api-secret)]
-       (str query-string "&sign=" sign)))
-
 (defn signed-form-params
   ; @param (map) form-params
   ; @param (string) api-secret
