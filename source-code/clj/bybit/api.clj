@@ -24,9 +24,8 @@
 (def TEST-API-ADDRESS core.uri.config/TEST-API-ADDRESS)
 
 ; bybit.core.request.sign
-(def signed-query-string core.request.sign/signed-query-string)
-(def signed-form-params  core.request.sign/signed-form-params)
-(def POST-form-params    core.request.sign/POST-form-params)
+(def signed-form-params core.request.sign/signed-form-params)
+(def POST-form-params   core.request.sign/POST-form-params)
 
 ; bybit.core.response.errors
 (def response-body->error?               core.response.errors/response-body->error?)
