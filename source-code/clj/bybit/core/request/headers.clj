@@ -5,35 +5,6 @@
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
 
-(defn raw-request-body-item
-  ; @param (string) name
-  ; @param (*) value
-  ;
-  ; @example
-  ;  (raw-request-body-item "basePrice" 42)
-  ;  =>
-  ;  "\"basePrice\": \"42\""
-  ;
-  ; @return (string)
-  [name value]
-  (if value (str "\""name"\": \""value"\"")))
-
-(defn raw-request-body
-  ; @param (strings in vector) items
-  ;
-  ; @example
-  ;  (raw-request-body ["\"basePrice\": \"42\"" "\"symbol\": \"ETHUSDT\""])
-  ;  =>
-  ;  "{\"basePrice\": \"42\", \"symbol\": \"ETHUSDT\"}"
-  ;
-  ; @return (string)
-  [items]
-  (letfn [(f [result dex item] (str (if-not (= dex 0) ", ") item))]
-         (str "{"(reduce-kv f "" items))"}"))
-
-;; ----------------------------------------------------------------------------
-;; ----------------------------------------------------------------------------
-
 (defn GET-headers
   ; @param (map) headers-props
   ;  {:api-key (string)
