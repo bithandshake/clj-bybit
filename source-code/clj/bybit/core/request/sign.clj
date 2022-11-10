@@ -1,7 +1,7 @@
 
 (ns bybit.core.request.sign
     (:require [mid-fruits.json    :as json]
-              [mid-fruits.loop    :refer [reduce-indexed]]
+              [loop.api           :refer [reduce-indexed]]
               [mid-fruits.map     :as map]
               [mid-fruits.vector  :as vector]
               [server-fruits.hash :as hash]
