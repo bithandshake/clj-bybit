@@ -5,8 +5,8 @@
               [bybit.position.list.headers :as position.list.headers]
               [bybit.position.list.receive :as position.list.receive]
               [bybit.position.list.uri     :as position.list.uri]
+              [candy.api                   :refer [return]]
               [clj-http.client             :as clj-http.client]
-              [mid-fruits.candy            :refer [return]]
               [time.api                    :as time]))
 
 ;; ----------------------------------------------------------------------------

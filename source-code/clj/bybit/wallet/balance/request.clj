@@ -5,8 +5,8 @@
               [bybit.wallet.balance.headers :as wallet.balance.headers]
               [bybit.wallet.balance.receive :as wallet.balance.receive]
               [bybit.wallet.balance.uri     :as wallet.balance.uri]
+              [candy.api                    :refer [return]]
               [clj-http.client              :as clj-http.client]
-              [mid-fruits.candy             :refer [return]]
               [time.api                     :as time]))
 
 ;; ----------------------------------------------------------------------------

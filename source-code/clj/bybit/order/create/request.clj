@@ -5,8 +5,8 @@
               [bybit.core.response.helpers :as core.response.helpers]
               [bybit.order.create.receive  :as order.create.receive]
               [bybit.order.create.uri      :as order.create.uri]
-              [clj-http.client             :as clj-http.client]
-              [mid-fruits.candy            :refer [return]]))
+              [candy.api                   :refer [return]]
+              [clj-http.client             :as clj-http.client]))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------

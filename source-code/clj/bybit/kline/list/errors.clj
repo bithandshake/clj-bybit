@@ -1,7 +1,7 @@
 
 (ns bybit.kline.list.errors
     (:require [bybit.kline.list.helpers :as kline.list.helpers]
-              [mid-fruits.candy         :refer [return]]
+              [candy.api                :refer [return]]
               [loop.api                 :refer [some-indexed]]))
 
 ;; ----------------------------------------------------------------------------
