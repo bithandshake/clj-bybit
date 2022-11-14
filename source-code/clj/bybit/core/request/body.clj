@@ -1,7 +1,7 @@
 
 (ns bybit.core.request.body
-    (:require [candy.api          :refer [return]]
-              [server-fruits.hash :as hash]))
+    (:require [candy.api :refer [return]]
+              [hash.api  :as hash]))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
