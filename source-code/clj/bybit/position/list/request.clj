@@ -45,8 +45,8 @@
   ;   :time-now (string)
   ;   :uri (string)}
   [{:keys [api-key] :as request-props}]
-  (let [headers       (position.list.headers/position-list-headers request-props)
-        uri           (position.list.uri/position-list-uri request-props)
+  (let [uri           (position.list.uri/position-list-uri         request-props)
+        headers       (position.list.headers/position-list-headers request-props)
         response      (clj-http.client/get uri {:headers headers})
         response-body (core.response.helpers/GET-response->body response)]
        (if (core.response.errors/response-body->error? response-body)

@@ -24,6 +24,11 @@
   ;   :symbol (string)(opt)}
   ; @param (string) timestamp
   ;
+  ; @example
+  ;  (position-list-param-string {:base-coin "BTC"} "1645550000123")
+  ;  =>
+  ;  "1645550000123XXXXXXXXXX5000baseCoin=BTC"
+  ;
   ; @return (string)
   [{:keys [api-key] :as param-props} timestamp]
   (let [query-string (position.list.uri/position-list-query-string param-props)]
@@ -61,4 +66,4 @@
   [headers-props]
   (let [timestamp    (time/epoch-ms)
         param-string (position-list-param-string headers-props timestamp)]
-       (core.request.headers/GET-headers headers-props timestamp param-string)))
+       (core.request.headers/GET-headers headers-props param-string timestamp)))

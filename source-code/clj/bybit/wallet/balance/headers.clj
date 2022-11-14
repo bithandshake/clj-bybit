@@ -13,6 +13,11 @@
   ;   :coin (string)(opt)}
   ; @param (string) timestamp
   ;
+  ; @example
+  ;  (wallet-balance-param-string {:coin "ETH"} "1645550000123")
+  ;  =>
+  ;  "1645550000123XXXXXXXXXX5000coin=ETH"
+  ;
   ; @return (string)
   [{:keys [api-key] :as param-props} timestamp]
   (let [query-string (wallet.balance.uri/wallet-balance-query-string param-props)]
@@ -41,4 +46,4 @@
   [headers-props]
   (let [timestamp    (time/epoch-ms)
         param-string (wallet-balance-param-string headers-props timestamp)]
-       (core.request.headers/GET-headers headers-props timestamp param-string)))
+       (core.request.headers/GET-headers headers-props param-string timestamp)))

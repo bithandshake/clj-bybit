@@ -1,7 +1,6 @@
 
 (ns bybit.api
-    (:require [bybit.core.request.sign      :as core.request.sign]
-              [bybit.core.response.errors   :as core.response.errors]
+    (:require [bybit.core.response.errors   :as core.response.errors]
               [bybit.core.response.helpers  :as core.response.helpers]
               [bybit.core.uri.config        :as core.uri.config]
               [bybit.kline.list.request     :as kline.list.request]
@@ -22,10 +21,6 @@
 ; bybit.core.uri.config
 (def API-ADDRESS      core.uri.config/API-ADDRESS)
 (def TEST-API-ADDRESS core.uri.config/TEST-API-ADDRESS)
-
-; bybit.core.request.sign
-(def signed-form-params core.request.sign/signed-form-params)
-(def POST-form-params   core.request.sign/POST-form-params)
 
 ; bybit.core.response.errors
 (def response-body->error?               core.response.errors/response-body->error?)

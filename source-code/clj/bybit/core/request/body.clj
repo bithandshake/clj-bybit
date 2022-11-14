@@ -1,6 +1,7 @@
 
 (ns bybit.core.request.body
-    (:require [server-fruits.hash :as hash]))
+    (:require [candy.api          :refer [return]]
+              [server-fruits.hash :as hash]))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
@@ -21,7 +22,7 @@
 (defn raw-request-body
   ; @param (numbers or strings in vectors in vector) items
   ;  [[(string) name
-  ;    (number or string) value]]
+  ;    (number or string)(opt) value]]
   ;
   ; @example
   ;  (raw-request-body [["basePrice" "42"] ["symbol" "ETHUSDT"]])
@@ -30,5 +31,15 @@
   ;
   ; @return (string)
   [items]
-  (letfn [(f [result dex [name value]] (str (if-not (= dex 0) ", ") (raw-request-body-item name value)))]
-         (str "{"(reduce-kv f items))"}"))
+  (letfn [(f [result [name value]]
+             (if value (str    result (if result ", ") (raw-request-body-item name value))
+                       (return result)))]
+         (let [raw-body (reduce f nil items)]
+              (str "{"raw-body"}"))))
+
+;; ----------------------------------------------------------------------------
+;; ----------------------------------------------------------------------------
+
+(defn POST-body
+  [items]
+  (raw-request-body items))

@@ -34,8 +34,8 @@
   ;   :uri (string)
   ;   :wallet-balance (map)}
   [{:keys [api-key] :as request-props}]
-  (let [headers       (wallet.balance.headers/wallet-balance-headers request-props)
-        uri           (wallet.balance.uri/wallet-balance-uri request-props)
+  (let [uri           (wallet.balance.uri/wallet-balance-uri         request-props)
+        headers       (wallet.balance.headers/wallet-balance-headers request-props)
         response      (clj-http.client/get uri {:headers headers})
         response-body (core.response.helpers/GET-response->body response)]
        (if (core.response.errors/response-body->error? response-body)
