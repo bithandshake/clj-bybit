@@ -2,7 +2,7 @@
 (ns bybit.core.response.helpers
     (:require [candy.api         :refer [return]]
               [json.api          :as json]
-              [mid-fruits.reader :as reader]
+              [reader.api        :as reader]
               [mid-fruits.string :as string]))
 
 ;; ----------------------------------------------------------------------------

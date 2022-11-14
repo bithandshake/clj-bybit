@@ -1,9 +1,9 @@
 
 (ns bybit.kline.list.receive
     (:require [bybit.kline.list.helpers :as kline.list.helpers]
-              [mid-fruits.reader        :as reader]
-              [mid-fruits.vector        :as vector]
-              [time.api                 :as time]))
+              [reader.api               :as reader]
+              [time.api                 :as time]
+              [mid-fruits.vector        :as vector]))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
