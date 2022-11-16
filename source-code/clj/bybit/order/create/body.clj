@@ -7,13 +7,13 @@
 
 (defn order-create-raw-request-body
   ; @param (map) body-props
-  ;  {}
+  ; {}
   ;
   ; @example
-  ;  (order-create-raw-request-body {:base-price 42})
-  ;  =>
-  ;  "..."
-  ;  "{\"basePrice\": \"42\"}"
+  ; (order-create-raw-request-body {:base-price 42})
+  ; =>
+  ; "..."
+  ; "{\"basePrice\": \"42\"}"
   ;
   ; @return (string)
   [body-props]

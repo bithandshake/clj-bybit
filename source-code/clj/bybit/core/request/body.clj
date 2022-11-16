@@ -11,9 +11,9 @@
   ; @param (*) value
   ;
   ; @example
-  ;  (raw-request-body-item "basePrice" 42)
-  ;  =>
-  ;  "\"basePrice\": \"42\""
+  ; (raw-request-body-item "basePrice" 42)
+  ; =>
+  ; "\"basePrice\": \"42\""
   ;
   ; @return (string)
   [name value]
@@ -21,13 +21,13 @@
 
 (defn raw-request-body
   ; @param (numbers or strings in vectors in vector) items
-  ;  [[(string) name
-  ;    (number or string)(opt) value]]
+  ; [[(string) name
+  ;   (number or string)(opt) value]]
   ;
   ; @example
-  ;  (raw-request-body [["basePrice" "42"] ["symbol" "ETHUSDT"]])
-  ;  =>
-  ;  "{\"basePrice\": \"42\", \"symbol\": \"ETHUSDT\"}"
+  ; (raw-request-body [["basePrice" "42"] ["symbol" "ETHUSDT"]])
+  ; =>
+  ; "{\"basePrice\": \"42\", \"symbol\": \"ETHUSDT\"}"
   ;
   ; @return (string)
   [items]

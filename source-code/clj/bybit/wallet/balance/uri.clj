@@ -7,7 +7,7 @@
 
 (defn wallet-balance-query-string
   ; @param (map) query-props
-  ;  {:coin (string)(opt)}
+  ; {:coin (string)(opt)}
   ;
   ; @return (string)
   [{:keys [coin]}]
@@ -15,19 +15,19 @@
 
 (defn wallet-balance-uri
   ; @param (map) uri-props
-  ;  {:coin (string)(opt)
-  ;   :use-mainnet? (boolean)(opt)
-  ;    Default: false}
+  ; {:coin (string)(opt)
+  ;  :use-mainnet? (boolean)(opt)
+  ;   Default: false}
   ;
   ; @example
-  ;  (wallet-balance-uri {})
-  ;  =>
-  ;  "https://api-testnet.bybit.com/unified/v3/private/account/wallet/balance"
+  ; (wallet-balance-uri {})
+  ; =>
+  ; "https://api-testnet.bybit.com/unified/v3/private/account/wallet/balance"
   ;
   ; @example
-  ;  (wallet-balance-uri {:use-mainnet? true})
-  ;  =>
-  ;  "https://api.bybit.com/unified/v3/private/account/wallet/balance"
+  ; (wallet-balance-uri {:use-mainnet? true})
+  ; =>
+  ; "https://api.bybit.com/unified/v3/private/account/wallet/balance"
   ;
   ; @return (string)
   [{:keys [use-mainnet?] :as uri-props}]

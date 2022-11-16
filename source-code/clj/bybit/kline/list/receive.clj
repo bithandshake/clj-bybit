@@ -10,27 +10,27 @@
 
 (defn receive-kline-item
   ; @param (vector) kline-item
-  ;  [(ms) start
-  ;   (string) open
-  ;   (string) high
-  ;   (string) low
-  ;   (string) close
-  ;   (string) volume
-  ;   (string) turnover]
+  ; [(ms) start
+  ;  (string) open
+  ;  (string) high
+  ;  (string) low
+  ;  (string) close
+  ;  (string) volume
+  ;  (string) turnover]
   ;
   ; @usage
-  ;  (receive-kline-item [...])
+  ; (receive-kline-item [...])
   ;
   ; @return (map)
-  ;  {:close (number)
-  ;   :close-time (ms)
-  ;   :close-timestamp (string)
-  ;   :high (number)
-  ;   :low (number)
-  ;   :open (number)
-  ;   :open-time (ms)
-  ;   :open-timestamp (string)
-  ;   :volume (number)}
+  ; {:close (number)
+  ;  :close-time (ms)
+  ;  :close-timestamp (string)
+  ;  :high (number)
+  ;  :low (number)
+  ;  :open (number)
+  ;  :open-time (ms)
+  ;  :open-timestamp (string)
+  ;  :volume (number)}
   [[start open high low close volume _]]
   (let [open-time (reader/read-str start)]
         ; WARNING! Az aktuális (éppen történő) periódus close-time értéke egy jövőbeni időpontra mutat!
@@ -47,15 +47,15 @@
 
 (defn receive-kline-list
   ; @param (map) kline-list-data
-  ;  {:kline-list (maps in vector)}
+  ; {:kline-list (maps in vector)}
   ;
   ; @usage
-  ;  (receive-kline-list {...})
+  ; (receive-kline-list {...})
   ;
   ; @return (map)
-  ;  {:kline-list (maps in vector)
-  ;   :total-high (integer)
-  ;   :total-low (integer)}
+  ; {:kline-list (maps in vector)
+  ;  :total-high (integer)
+  ;  :total-low (integer)}
   [{:keys [kline-list] :as kline-list-data}]
   (letfn [(f [{:keys [total-high total-low] :as result} [_ _ high low _ _ _ :as kline-item]]
              (let [high (reader/read-str high)

@@ -9,14 +9,14 @@
 
 (defn wallet-balance-param-string
   ; @param (map) param-props
-  ;  {:api-key (string)
-  ;   :coin (string)(opt)}
+  ; {:api-key (string)
+  ;  :coin (string)(opt)}
   ; @param (string) timestamp
   ;
   ; @example
-  ;  (wallet-balance-param-string {:coin "ETH"} "1645550000123")
-  ;  =>
-  ;  "1645550000123XXXXXXXXXX5000coin=ETH"
+  ; (wallet-balance-param-string {:coin "ETH"} "1645550000123")
+  ; =>
+  ; "1645550000123XXXXXXXXXX5000coin=ETH"
   ;
   ; @return (string)
   [{:keys [api-key] :as param-props} timestamp]
@@ -25,24 +25,24 @@
 
 (defn wallet-balance-headers
   ; @param (map) uri-props
-  ;  {:api-key (string)
-  ;   :api-secret (string)
-  ;   :coin (string)(opt)
-  ;   :use-mainnet? (boolean)(opt)
-  ;    Default: false}
+  ; {:api-key (string)
+  ;  :api-secret (string)
+  ;  :coin (string)(opt)
+  ;  :use-mainnet? (boolean)(opt)
+  ;   Default: false}
   ;
   ; @usage
-  ;  (wallet-balance-headers {})
+  ; (wallet-balance-headers {})
   ;
   ; @usage
-  ;  (wallet-balance-headers {:use-mainnet? true})
+  ; (wallet-balance-headers {:use-mainnet? true})
   ;
   ; @return (map)
-  ;  {"X-BAPI-SIGN-TYPE" (integer)
-  ;   "X-BAPI-SIGN" (string)
-  ;   "X-BAPI-API-KEY" (string)
-  ;   "X-BAPI-TIMESTAMP" (string)
-  ;   "X-BAPI-RECV-WINDOW" (integer)}
+  ; {"X-BAPI-SIGN-TYPE" (integer)
+  ;  "X-BAPI-SIGN" (string)
+  ;  "X-BAPI-API-KEY" (string)
+  ;  "X-BAPI-TIMESTAMP" (string)
+  ;  "X-BAPI-RECV-WINDOW" (integer)}
   [headers-props]
   (let [timestamp    (time/epoch-ms)
         param-string (wallet-balance-param-string headers-props timestamp)]

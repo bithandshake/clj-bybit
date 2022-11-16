@@ -14,36 +14,36 @@
 
 (defn request-position-list!
   ; @param (map) request-props
-  ;  {:api-key (string)
-  ;   :api-secret (string)
-  ;   :base-coin (string)(opt)
-  ;    Default: "BTC"
-  ;    W/ {:category "option"}
-  ;   :category (string)
-  ;    "linear", "option"
-  ;   :cursor (string)(opt)
-  ;   :direction (string)(opt)
-  ;    "next", "prev"
-  ;   :limit (number)(opt)
-  ;    Default: 20
-  ;    Max: 50
-  ;   :symbol (string)(opt)
-  ;   :use-mainnet? (boolean)(opt)
-  ;    Default: false}
+  ; {:api-key (string)
+  ;  :api-secret (string)
+  ;  :base-coin (string)(opt)
+  ;   Default: "BTC"
+  ;   W/ {:category "option"}
+  ;  :category (string)
+  ;   "linear", "option"
+  ;  :cursor (string)(opt)
+  ;  :direction (string)(opt)
+  ;   "next", "prev"
+  ;  :limit (number)(opt)
+  ;   Default: 20
+  ;   Max: 50
+  ;  :symbol (string)(opt)
+  ;  :use-mainnet? (boolean)(opt)
+  ;   Default: false}
   ;
   ; @example
-  ;  (request-position-list! {:api-key "..." :api-secret "..." :category "option"})
-  ;  =>
-  ;  {:api-key  "..."
-  ;   :position-list [...]
-  ;   :time-now "..."
-  ;   :uri      "..."}
+  ; (request-position-list! {:api-key "..." :api-secret "..." :category "option"})
+  ; =>
+  ; {:api-key  "..."
+  ;  :position-list [...]
+  ;  :time-now "..."
+  ;  :uri      "..."}
   ;
   ; @return (map)
-  ;  {:api-key (string)
-  ;   :position-list (maps in vector)
-  ;   :time-now (string)
-  ;   :uri (string)}
+  ; {:api-key (string)
+  ;  :position-list (maps in vector)
+  ;  :time-now (string)
+  ;  :uri (string)}
   [{:keys [api-key] :as request-props}]
   (let [uri           (position.list.uri/position-list-uri         request-props)
         headers       (position.list.headers/position-list-headers request-props)

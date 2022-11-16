@@ -7,12 +7,12 @@
 
 (defn interval-duration
   ; @param (string) interval
-  ;  "1", "3", "5", "15", "30", "60", "120", "240", "360", "720", "D", "M", "W"
+  ; "1", "3", "5", "15", "30", "60", "120", "240", "360", "720", "D", "M", "W"
   ;
   ; @example
-  ;  (interval-duration "1")
-  ;  =>
-  ;  60000
+  ; (interval-duration "1")
+  ; =>
+  ; 60000
   ;
   ; @return (ms)
   [interval]
@@ -22,12 +22,12 @@
 (defn close-time
   ; @param (ms) open-time
   ; @param (string) interval
-  ;  "1", "3", "5", "15", "30", "60", "120", "240", "360", "720", "D", "M", "W"
+  ; "1", "3", "5", "15", "30", "60", "120", "240", "360", "720", "D", "M", "W"
   ;
   ; @example
-  ;  (close-time 1580183600000 "1")
-  ;  =>
-  ;  1580183660000
+  ; (close-time 1580183600000 "1")
+  ; =>
+  ; 1580183660000
   ;
   ; @return (ms)
   [open-time interval]
@@ -35,13 +35,13 @@
 
 (defn query-duration
   ; @param (string) interval
-  ;  "1", "3", "5", "15", "30", "60", "120", "240", "360", "720", "D", "M", "W"
+  ; "1", "3", "5", "15", "30", "60", "120", "240", "360", "720", "D", "M", "W"
   ; @param (integer) limit
   ;
   ; @example
-  ;  (query-duration "1" 60)
-  ;  =>
-  ;  3600000
+  ; (query-duration "1" 60)
+  ; =>
+  ; 3600000
   ;
   ; @return (ms)
   [interval limit]
@@ -49,14 +49,14 @@
 
 (defn query-start
   ; @param (string) interval
-  ;  "1", "3", "5", "15", "30", "60", "120", "240", "360", "720", "D", "M", "W"
+  ; "1", "3", "5", "15", "30", "60", "120", "240", "360", "720", "D", "M", "W"
   ; @param (integer) limit
   ; @param (ms)(opt) epoch-ms
   ;
   ; @example
-  ;  (query-start "1" 60 1580183600000)
-  ;  =>
-  ;  1580180000000
+  ; (query-start "1" 60 1580183600000)
+  ; =>
+  ; 1580180000000
   ;
   ; @return (ms)
   ([interval limit]

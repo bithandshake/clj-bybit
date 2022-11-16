@@ -9,14 +9,14 @@
 
 (defn kline-list-query-string
   ; @param (map) query-props
-  ;  {:category (string)
-  ;    "inverse", "linear"
-  ;   :interval (string)
-  ;    "1", "3", "5", "15", "30", "60", "120", "240", "360", "720", "D", "M", "W"
-  ;   :limit (integer)
-  ;    Max: 200
-  ;   :start (ms)(opt)
-  ;   :symbol (string)}
+  ; {:category (string)
+  ;   "inverse", "linear"
+  ;  :interval (string)
+  ;   "1", "3", "5", "15", "30", "60", "120", "240", "360", "720", "D", "M", "W"
+  ;  :limit (integer)
+  ;   Max: 200
+  ;  :start (ms)(opt)
+  ;  :symbol (string)}
   ;
   ; @return (string)
   [{:keys [category start interval limit symbol]}]
@@ -32,26 +32,26 @@
 
 (defn kline-list-uri
   ; @param (map) uri-props
-  ;  {:category (string)
-  ;    "inverse", "linear"
-  ;   :interval (string)
-  ;    "1", "3", "5", "15", "30", "60", "120", "240", "360", "720", "D", "M", "W"
-  ;   :limit (integer)
-  ;    Max: 200
-  ;   :start (ms)(opt)
-  ;   :symbol (string)
-  ;   :use-mainnet? (boolean)(opt)
-  ;    Default: false}
+  ; {:category (string)
+  ;   "inverse", "linear"
+  ;  :interval (string)
+  ;   "1", "3", "5", "15", "30", "60", "120", "240", "360", "720", "D", "M", "W"
+  ;  :limit (integer)
+  ;   Max: 200
+  ;  :start (ms)(opt)
+  ;  :symbol (string)
+  ;  :use-mainnet? (boolean)(opt)
+  ;   Default: false}
   ;
   ; @example
-  ;  (kline-list-uri {:interval "1" :limit 60 :symbol "ETHUSDT"})
-  ;  =>
-  ;  "https://api-testnet.bybit.com/derivatives/v3/public/kline?category=linear&symbol=ETHUSDT&interval=1&limit=60&start=1646401800000&end=..."
+  ; (kline-list-uri {:interval "1" :limit 60 :symbol "ETHUSDT"})
+  ; =>
+  ; "https://api-testnet.bybit.com/derivatives/v3/public/kline?category=linear&symbol=ETHUSDT&interval=1&limit=60&start=1646401800000&end=..."
   ;
   ; @example
-  ;  (kline-list-uri {:interval "1" :limit 60 :symbol "ETHUSDT" :use-mainnet? true})
-  ;  =>
-  ;  "https://api.bybit.com/derivatives/v3/public/kline?category=linear&symbol=ETHUSDT&interval=1&limit=60&start=1646401800000&end=..."
+  ; (kline-list-uri {:interval "1" :limit 60 :symbol "ETHUSDT" :use-mainnet? true})
+  ; =>
+  ; "https://api.bybit.com/derivatives/v3/public/kline?category=linear&symbol=ETHUSDT&interval=1&limit=60&start=1646401800000&end=..."
   ;
   ; @return (string)
   [{:keys [use-mainnet?] :as uri-props}]
@@ -61,21 +61,21 @@
 
 (defn kline-list-uri-list
   ; @param (map) uri-props
-  ;  {:category (string)
-  ;    "inverse", "linear"
-  ;   :interval (string)
-  ;    "1", "3", "5", "15", "30", "60", "120", "240", "360", "720", "D", "M", "W"
-  ;   :limit (integer)
-  ;   :start (ms)(opt)
-  ;   :symbol (string)
-  ;   :use-mainnet? (boolean)(opt)
-  ;    Default: false}
+  ; {:category (string)
+  ;   "inverse", "linear"
+  ;  :interval (string)
+  ;   "1", "3", "5", "15", "30", "60", "120", "240", "360", "720", "D", "M", "W"
+  ;  :limit (integer)
+  ;  :start (ms)(opt)
+  ;  :symbol (string)
+  ;  :use-mainnet? (boolean)(opt)
+  ;   Default: false}
   ;
   ; @example
-  ;  (kline-list-uri-list {:interval "1" :limit 240 :symbol "ETHUSDT"})
-  ;  =>
-  ;  ["https://api-testnet.bybit.com/derivatives/v3/public/kline?category=linear&symbol=ETHUSDT&interval=1&limit=40&start=1646401800000&end=..."
-  ;   "https://api-testnet.bybit.com/derivatives/v3/public/kline?category=linear&symbol=ETHUSDT&interval=1&limit=200&start=1646404200000&end=..."]
+  ; (kline-list-uri-list {:interval "1" :limit 240 :symbol "ETHUSDT"})
+  ; =>
+  ; ["https://api-testnet.bybit.com/derivatives/v3/public/kline?category=linear&symbol=ETHUSDT&interval=1&limit=40&start=1646401800000&end=..."
+  ;  "https://api-testnet.bybit.com/derivatives/v3/public/kline?category=linear&symbol=ETHUSDT&interval=1&limit=200&start=1646404200000&end=..."]
   ;
   ; @return (strings in vector)
   [{:keys [interval] :as uri-props}]

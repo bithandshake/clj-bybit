@@ -9,11 +9,11 @@
 
 (defn kline-list-data->time-error
   ; @param (map) kline-list-data
-  ;  {:kline-list (maps in vector)}
+  ; {:kline-list (maps in vector)}
   ; @param (map) options
   ;
   ; @return (namespaced keyword)
-  ;  :time-error/different-intervals, :time-error/time-slippage
+  ; :time-error/different-intervals, :time-error/time-slippage
   [{:keys [kline-list]} _]
   (letfn [(f [dex x]
              (cond ; Az első elemet nincs mivel összehasonlítani ...
@@ -32,21 +32,21 @@
 
 (defn kline-list-data->limit-error
   ; @param (map) kline-list-data
-  ;  {:kline-list (maps in vector)}
+  ; {:kline-list (maps in vector)}
   ; @param (map) options
-  ;  {:limit (integer)}
+  ; {:limit (integer)}
   ;
   ; @return (namespaced keyword)
-  ;  :limit-error/too-few-kline, :limit-error/too-many-kline
+  ; :limit-error/too-few-kline, :limit-error/too-many-kline
   [{:keys [kline-list]} {:keys [limit]}]
   (cond (> limit (count kline-list)) (return :limit-error/too-few-kline)
         (< limit (count kline-list)) (return :limit-error/too-many-kline)))
 
 (defn kline-list-data->error
   ; @param (map) kline-list-data
-  ;  {:kline-list (maps in vector)}
+  ; {:kline-list (maps in vector)}
   ; @param (map) options
-  ;  {:limit (integer)}
+  ; {:limit (integer)}
   ;
   ; @return (namespaced keyword)
   [kline-list-data options]
@@ -55,12 +55,12 @@
 
 (defn kline-list-data<-error
   ; @param (map) kline-list-data
-  ;  {:kline-list (maps in vector)}
+  ; {:kline-list (maps in vector)}
   ; @param (map) options
-  ;  {:limit (integer)}
+  ; {:limit (integer)}
   ;
   ; @return (map)
-  ;  {:error (namespaced keyword)}
+  ; {:error (namespaced keyword)}
   [kline-list-data options]
   (if-let [error (kline-list-data->error kline-list-data options)]
           (assoc  kline-list-data :error error)

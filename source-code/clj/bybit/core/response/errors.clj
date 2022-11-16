@@ -6,10 +6,10 @@
 
 (defn response-body->error?
   ; @param (map) response-body
-  ;  {:ret-code (integer)}
+  ; {:ret-code (integer)}
   ;
   ; @usage
-  ;  (response-body->error? {...})
+  ; (response-body->error? {...})
   ;
   ; @return (boolean)
   [{:keys [ret-code]}]
@@ -17,10 +17,10 @@
 
 (defn response-body->invalid-api-details?
   ; @param (map) response-body
-  ;  {:ret-code (integer)}
+  ; {:ret-code (integer)}
   ;
   ; @usage
-  ;  (response-body->invalid-api-details? {...})
+  ; (response-body->invalid-api-details? {...})
   ;
   ; @return (boolean)
   [{:keys [ret-code]}]

@@ -7,10 +7,10 @@
 
 (defn receive-wallet-balance
   ; @param (map) wallet-balance-data
-  ;  {:wallet-balance (maps in vector)}
+  ; {:wallet-balance (maps in vector)}
   ;
   ; @usage
-  ;  (receive-wallet-balance {...})
+  ; (receive-wallet-balance {...})
   ;
   ; @return (map)
   [wallet-balance-data]

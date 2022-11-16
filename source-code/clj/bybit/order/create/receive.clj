@@ -7,10 +7,10 @@
 
 (defn receive-order-created
   ; @param (map) order-created-data
-  ;  {:order-created (maps in vector)}
+  ; {:order-created (maps in vector)}
   ;
   ; @usage
-  ;  (receive-order-created {...})
+  ; (receive-order-created {...})
   ;
   ; @return (map)
   [order-created-data]

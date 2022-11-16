@@ -14,25 +14,25 @@
 
 (defn request-wallet-balance!
   ; @param (map) request-props
-  ;  {:api-key (string)
-  ;   :api-secret (string)
-  ;   :coin (string)(opt)
-  ;   :use-mainnet? (boolean)(opt)
-  ;    Default: false}
+  ; {:api-key (string)
+  ;  :api-secret (string)
+  ;  :coin (string)(opt)
+  ;  :use-mainnet? (boolean)(opt)
+  ;   Default: false}
   ;
   ; @example
-  ;  (request-wallet-balance! {:api-key "..." :api-secret "..."})
-  ;  =>
-  ;  {:api-key        "..."
-  ;   :time-now       "..."
-  ;   :uri            "..."
-  ;   :wallet-balance {...}}
+  ; (request-wallet-balance! {:api-key "..." :api-secret "..."})
+  ; =>
+  ; {:api-key        "..."
+  ;  :time-now       "..."
+  ;  :uri            "..."
+  ;  :wallet-balance {...}}
   ;
   ; @return (map)
-  ;  {:api-key (string)
-  ;   :time-now (string)
-  ;   :uri (string)
-  ;   :wallet-balance (map)}
+  ; {:api-key (string)
+  ;  :time-now (string)
+  ;  :uri (string)
+  ;  :wallet-balance (map)}
   [{:keys [api-key] :as request-props}]
   (let [uri           (wallet.balance.uri/wallet-balance-uri         request-props)
         headers       (wallet.balance.headers/wallet-balance-headers request-props)

@@ -12,9 +12,9 @@
   ; @param (string) n
   ;
   ; @example
-  ;  (time-now->epoch-ms "1645550000.123456")
-  ;  =>
-  ;  1645550000123
+  ; (time-now->epoch-ms "1645550000.123456")
+  ; =>
+  ; 1645550000123
   ;
   ; @return (integer)
   [n]
@@ -27,15 +27,15 @@
 
 (defn GET-response->body
   ; @param (map) response
-  ;  {:body (string)}
+  ; {:body (string)}
   ;
   ; @example
-  ;  (GET-response->body {... :body "{\"result\":[{...},{...}]}"})
-  ;  =>
-  ;  {:result [{...} {...}]}
+  ; (GET-response->body {... :body "{\"result\":[{...},{...}]}"})
+  ; =>
+  ; {:result [{...} {...}]}
   ;
   ; @return (map)
-  ;  {}
+  ; {}
   [{:keys [body]}]
   ; XXX#0147
   ; A reader/string->mixed függvény ...
@@ -51,29 +51,29 @@
 
 (defn POST-response->headers
   ; @param (map) response
-  ;  {:headers (string)}
+  ; {:headers (string)}
   ;
   ; @example
-  ;  (POST-response->headers {...})
-  ;  =>
-  ;  {...}
+  ; (POST-response->headers {...})
+  ; =>
+  ; {...}
   ;
   ; @return (map)
-  ;  {}
+  ; {}
   [{:keys [headers]}]
   (return headers))
 
 (defn POST-response->body
   ; @param (map) response
-  ;  {:body (string)}
+  ; {:body (string)}
   ;
   ; @example
-  ;  (POST-response->body {...})
-  ;  =>
-  ;  {...}
+  ; (POST-response->body {...})
+  ; =>
+  ; {...}
   ;
   ; @return (map)
-  ;  {}
+  ; {}
   [{:keys [body]}]
   ; XXX#0147
   (-> (string/replace-part body #"\":" "\" ")

@@ -9,14 +9,14 @@
 
 (defn order-create-param-string
   ; @param (map) param-props
-  ;  {:api-key (string)
-  ;   ...}
+  ; {:api-key (string)
+  ;  ...}
   ; @param (string) timestamp
   ;
   ; @example
-  ;  (order-create-param-string {:base-price 42} "1645550000123")
-  ;  =>
-  ;  "1645550000123XXXXXXXXXX5000{\"basePrice\": \"42\"}"
+  ; (order-create-param-string {:base-price 42} "1645550000123")
+  ; =>
+  ; "1645550000123XXXXXXXXXX5000{\"basePrice\": \"42\"}"
   ;
   ; @return (string)
   [{:keys [api-key] :as param-props} timestamp]
@@ -25,21 +25,21 @@
 
 (defn order-create-headers
   ; @param (map) uri-props
-  ;  {}
+  ; {}
   ;
   ; @usage
-  ;  (order-create-headers {})
+  ; (order-create-headers {})
   ;
   ; @usage
-  ;  (order-create-headers {:use-mainnet? true})
+  ; (order-create-headers {:use-mainnet? true})
   ;
   ; @return (map)
-  ;  {"Content-Type" (string)
-  ;   "X-BAPI-SIGN-TYPE" (integer)
-  ;   "X-BAPI-SIGN" (string)
-  ;   "X-BAPI-API-KEY" (string)
-  ;   "X-BAPI-TIMESTAMP" (string)
-  ;   "X-BAPI-RECV-WINDOW" (integer)}
+  ; {"Content-Type" (string)
+  ;  "X-BAPI-SIGN-TYPE" (integer)
+  ;  "X-BAPI-SIGN" (string)
+  ;  "X-BAPI-API-KEY" (string)
+  ;  "X-BAPI-TIMESTAMP" (string)
+  ;  "X-BAPI-RECV-WINDOW" (integer)}
   [headers-props]
   (let [timestamp    (time/epoch-ms)
         param-string (order-create-param-string headers-props timestamp)]

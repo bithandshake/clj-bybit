@@ -15,28 +15,28 @@
 
 (defn request-kline-list!
   ; @param (map) request-props
-  ;  {:category (string)
-  ;    "inverse", "linear"
-  ;   :interval (string)
-  ;    "1", "3", "5", "15", "30", "60", "120", "240", "360", "720", "D", "M", "W"
-  ;   :limit (integer)
-  ;   :symbol (string)
-  ;   :use-mainnet? (boolean)(opt)
-  ;    Default: false}
+  ; {:category (string)
+  ;   "inverse", "linear"
+  ;  :interval (string)
+  ;   "1", "3", "5", "15", "30", "60", "120", "240", "360", "720", "D", "M", "W"
+  ;  :limit (integer)
+  ;  :symbol (string)
+  ;  :use-mainnet? (boolean)(opt)
+  ;   Default: false}
   ;
   ; @example
-  ;  (request-kline-list! {:interval "1" :limit 60 :symbol "ETHUSDT"})
-  ;  =>
-  ;  {:high 2420 :low 2160 :symbol "ETHUSDT" :time-now "..." :kline-list [{...} {...}] :uri-list ["..." "..."]}
+  ; (request-kline-list! {:interval "1" :limit 60 :symbol "ETHUSDT"})
+  ; =>
+  ; {:high 2420 :low 2160 :symbol "ETHUSDT" :time-now "..." :kline-list [{...} {...}] :uri-list ["..." "..."]}
   ;
   ; @return (map)
-  ;  {:error (namespaced keyword)
-  ;   :high (integer)
-  ;   :kline-list (maps in vector)
-  ;   :low (integer)
-  ;   :symbol (string)
-  ;   :time-now (integer)
-  ;   :uri-list (strings in vector)}
+  ; {:error (namespaced keyword)
+  ;  :high (integer)
+  ;  :kline-list (maps in vector)
+  ;  :low (integer)
+  ;  :symbol (string)
+  ;  :time-now (integer)
+  ;  :uri-list (strings in vector)}
   [{:keys [symbol] :as request-props}]
   ; Az api.bybit.com szerver által elfogadott maximális limit érték 200, ezért az annál több
   ; periódust igénylő lekéréseket több részletben küldi el, majd ... dolgozza fel a válaszokat.
