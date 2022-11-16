@@ -2,7 +2,7 @@
 # <strong>bybit.api</strong> namespace
 <p>Documentation of the <strong>bybit/api.clj</strong> file</p>
 
-[README](../../../README.md) > [DOCUMENTATION](../../COVER.md) > bybit.api
+<strong>[README](../../../README.md) > [DOCUMENTATION](../../COVER.md) > bybit.api</strong>
 
 
 

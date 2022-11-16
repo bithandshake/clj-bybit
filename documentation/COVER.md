@@ -2,7 +2,7 @@
 # <strong>bybit-api</strong>
 <p>Documentation of the <strong>bybit-api</strong> Clojure library</p>
 
-[README](../README.md) > DOCUMENTATION
+<strong>[README](../README.md) > DOCUMENTATION</strong>
 
 ### Public namespaces
 * [bybit.api](clj/bybit/API.md) [clj]
