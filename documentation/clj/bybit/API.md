@@ -10,6 +10,14 @@
 
 ```
 @param (map) request-props
+{:category (string)
+  "inverse", "linear"
+ :interval (string)
+  "1", "3", "5", "15", "30", "60", "120", "240", "360", "720", "D", "M", "W"
+ :limit (integer)
+ :symbol (string)
+ :use-mainnet? (boolean)(opt)
+  Default: false}
 ```
 
 ```
@@ -21,6 +29,13 @@
 
 ```
 @return (map)
+{:error (namespaced keyword)
+ :high (integer)
+ :kline-list (maps in vector)
+ :low (integer)
+ :symbol (string)
+ :time-now (integer)
+ :uri-list (strings in vector)}
 ```
 
 <details>
@@ -59,6 +74,39 @@
 
 ```
 @param (map) request-props
+{:api-key (string)
+ :api-secret (string)
+ :base-price (?)(opt)
+ :category (string)
+  "linear", "option"
+ :close-on-trigger? (boolean)(opt)
+  Default: false
+ :implied-volatility (string)(opt)
+ :order-link-id (string)(opt)
+ :order-type (string)
+  "Limit", "Market"
+ :position-dex (string)(opt)
+ :price (?)(opt)
+ :protect-market-maker? (boolean)(opt)
+  Default: false
+ :quantity (USD)
+ :reduce-only? (boolean)(opt)
+  Default: false
+ :side (string)
+  "Buy", "Sell"
+ :sl-trigger-by (string)(opt)
+ :stop-loss (?)(opt)
+ :symbol (string)
+ :take-profit (?)(opt)
+ :time-in-force (string)
+  "FillOrKill", "GoodTillCancel", "ImmediateOrCancel", "PostOnly"
+ :tp-trigger-by (string)(opt)
+ :trigger-by (string)(opt)
+  "Market price", "Mark price"              <----      ez
+  "IndexPrice", "LastPrice", "MarkPrice"    <---- vagy ez
+ :trigger-price (?)(opt)
+ :use-mainnet? (boolean)(opt)
+  Default: false}
 ```
 
 ```
@@ -70,6 +118,7 @@
 
 ```
 @return (map)
+{}
 ```
 
 <details>
@@ -106,6 +155,22 @@
 
 ```
 @param (map) request-props
+{:api-key (string)
+ :api-secret (string)
+ :base-coin (string)(opt)
+  Default: "BTC"
+  W/ {:category "option"}
+ :category (string)
+  "linear", "option"
+ :cursor (string)(opt)
+ :direction (string)(opt)
+  "next", "prev"
+ :limit (number)(opt)
+  Default: 20
+  Max: 50
+ :symbol (string)(opt)
+ :use-mainnet? (boolean)(opt)
+  Default: false}
 ```
 
 ```
@@ -120,6 +185,10 @@
 
 ```
 @return (map)
+{:api-key (string)
+ :position-list (maps in vector)
+ :time-now (string)
+ :uri (string)}
 ```
 
 <details>
@@ -161,6 +230,11 @@
 
 ```
 @param (map) request-props
+{:api-key (string)
+ :api-secret (string)
+ :coin (string)(opt)
+ :use-mainnet? (boolean)(opt)
+  Default: false}
 ```
 
 ```
@@ -175,6 +249,10 @@
 
 ```
 @return (map)
+{:api-key (string)
+ :time-now (string)
+ :uri (string)
+ :wallet-balance (map)}
 ```
 
 <details>
