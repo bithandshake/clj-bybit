@@ -7,8 +7,8 @@
               [bybit.kline.list.receive    :as kline.list.receive]
               [bybit.kline.list.uri        :as kline.list.uri]
               [clj-http.client             :as clj-http.client]
-              [mid-fruits.vector           :as vector]
-              [time.api                    :as time]))
+              [time.api                    :as time]
+              [vector.api                  :as vector]))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------

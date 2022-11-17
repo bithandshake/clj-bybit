@@ -3,7 +3,7 @@
     (:require [bybit.kline.list.helpers :as kline.list.helpers]
               [reader.api               :as reader]
               [time.api                 :as time]
-              [mid-fruits.vector        :as vector]))
+              [vector.api               :as vector]))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------

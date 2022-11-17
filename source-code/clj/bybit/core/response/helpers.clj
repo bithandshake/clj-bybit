@@ -1,9 +1,9 @@
 
 (ns bybit.core.response.helpers
-    (:require [candy.api         :refer [return]]
-              [json.api          :as json]
-              [reader.api        :as reader]
-              [mid-fruits.string :as string]))
+    (:require [candy.api  :refer [return]]
+              [json.api   :as json]
+              [reader.api :as reader]
+              [string.api :as string]))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
