@@ -76,7 +76,7 @@
   Megvéd a pillanatnyi kiugóran magas értékek okozta hibáktól.
 
 # Index price
-  TODO ...
+  TODO
 
 # Liquidation / margin call
-  TODO ...
+  TODO
