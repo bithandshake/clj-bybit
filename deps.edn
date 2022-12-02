@@ -1,0 +1,7 @@
+
+{:paths ["source-code/clj"]
+ :deps  {clj-http/clj-http        {:mvn/version "3.12.3"}
+         bithandshake/cljc-fruits {:git/url "https://github.com/bithandshake/cljc-fruits"
+                                   :sha     "20496b986eb74062e3cb9b1cda7b5ad9ef3e04af"}
+         bithandshake/time-api    {:git/url "https://github.com/bithandshake/time-api"
+                                   :sha     "2de7e6867f7103b1d5a92395e4228ece667cc093"}}}

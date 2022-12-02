@@ -11,5 +11,5 @@ helps you to connect to the Bybit.com API v3.
 
 # Warning
 
-The <strong>bybit-api</strong> library is in the pre-beta stage.
+The <strong>bybit-api</strong> library is in pre-beta stage.
 It is not recommended to use it in product releases!
