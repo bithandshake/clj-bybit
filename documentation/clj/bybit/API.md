@@ -1,10 +1,7 @@
 
 # <strong>bybit.api</strong> namespace
-<p>Documentation of the <strong>bybit/api.clj</strong> file</p>
 
-<strong>[README](../../../README.md) > [DOCUMENTATION](../../COVER.md) > bybit.api</strong>
-
-
+<strong>[README](../../../README.md) > [DOCUMENTATION](../../COVER.md) > </strong>source-code/clj/bybit/api.clj
 
 ### request-kline-list!
 
@@ -60,10 +57,10 @@
 <summary>Require</summary>
 
 ```
-(ns my-namespace (:require [bybit.api :as bybit :refer [request-kline-list!]]))
+(ns my-namespace (:require [bybit.api :refer [request-kline-list!]]))
 
-(bybit/request-kline-list! ...)
-(request-kline-list!       ...)
+(bybit.api/request-kline-list! ...)
+(request-kline-list!           ...)
 ```
 
 </details>
@@ -141,10 +138,10 @@
 <summary>Require</summary>
 
 ```
-(ns my-namespace (:require [bybit.api :as bybit :refer [request-order-create!]]))
+(ns my-namespace (:require [bybit.api :refer [request-order-create!]]))
 
-(bybit/request-order-create! ...)
-(request-order-create!       ...)
+(bybit.api/request-order-create! ...)
+(request-order-create!           ...)
 ```
 
 </details>
@@ -216,10 +213,10 @@
 <summary>Require</summary>
 
 ```
-(ns my-namespace (:require [bybit.api :as bybit :refer [request-position-list!]]))
+(ns my-namespace (:require [bybit.api :refer [request-position-list!]]))
 
-(bybit/request-position-list! ...)
-(request-position-list!       ...)
+(bybit.api/request-position-list! ...)
+(request-position-list!           ...)
 ```
 
 </details>
@@ -280,10 +277,10 @@
 <summary>Require</summary>
 
 ```
-(ns my-namespace (:require [bybit.api :as bybit :refer [request-wallet-balance!]]))
+(ns my-namespace (:require [bybit.api :refer [request-wallet-balance!]]))
 
-(bybit/request-wallet-balance! ...)
-(request-wallet-balance!       ...)
+(bybit.api/request-wallet-balance! ...)
+(request-wallet-balance!           ...)
 ```
 
 </details>

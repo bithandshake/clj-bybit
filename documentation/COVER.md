@@ -1,10 +1,12 @@
 
 # <strong>bybit-api</strong>
-<p>Documentation of the <strong>bybit-api</strong> Clojure library</p>
+
+<p>Documentation of the <strong>bybit-api</strong> Clojure / ClojureScript library</p>
 
 <strong>[README](../README.md) > DOCUMENTATION</strong>
 
 ### Public namespaces
+
 * [bybit.api](clj/bybit/API.md) [clj]
 
 ---
