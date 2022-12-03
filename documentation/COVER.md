@@ -1,19 +1,13 @@
 
 # <strong>bybit-api</strong>
 
-<p>Documentation of the <strong>bybit-api</strong> Clojure / ClojureScript library</p>
+<p>Documentation of the <strong>bybit-api</strong> Clojure library</p>
 
 <strong>[README](../README.md) > DOCUMENTATION</strong>
 
 ### Clojure namespaces
 
 * [bybit.api](clj/bybit/API.md) [clj]
-
-### Isomorphic namespaces
-
-
-### ClojureScript namespaces
-
 
 ---
 
