@@ -17,11 +17,12 @@
 
 ```
 @param (map) request-props
-{:category (string)
+{:category (string)(opt)
   "inverse", "linear"
  :interval (string)
   "1", "3", "5", "15", "30", "60", "120", "240", "360", "720", "D", "M", "W"
  :limit (integer)
+ :start (ms)(opt)
  :symbol (string)
  :use-mainnet? (boolean)(opt)
   Default: false}
