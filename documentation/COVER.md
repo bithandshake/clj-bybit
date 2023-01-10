@@ -1,8 +1,7 @@
 
-
 # bybit-api documentation
 
-Documentation of the [bybit-api](https://github.com/bithandshake-hq/bybit-api) Clojure library
+Documentation of the [bybit-api](https://github.com/bithandshake/bybit-api) Clojure library
 
 ##### [README](../README.md) > DOCUMENTATION
 
