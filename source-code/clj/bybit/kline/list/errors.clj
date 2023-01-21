@@ -8,6 +8,8 @@
 ;; ----------------------------------------------------------------------------
 
 (defn kline-list-data->time-error
+  ; @ignore
+  ;
   ; @param (map) kline-list-data
   ; {:kline-list (maps in vector)}
   ; @param (map) options
@@ -31,6 +33,8 @@
          (some-indexed f kline-list)))
 
 (defn kline-list-data->limit-error
+  ; @ignore
+  ;
   ; @param (map) kline-list-data
   ; {:kline-list (maps in vector)}
   ; @param (map) options
@@ -43,6 +47,8 @@
         (< limit (count kline-list)) (return :limit-error/too-many-kline)))
 
 (defn kline-list-data->error
+  ; @ignore
+  ;
   ; @param (map) kline-list-data
   ; {:kline-list (maps in vector)}
   ; @param (map) options
@@ -54,6 +60,8 @@
       (kline-list-data->limit-error kline-list-data options)))
 
 (defn kline-list-data<-error
+  ; @ignore
+  ;
   ; @param (map) kline-list-data
   ; {:kline-list (maps in vector)}
   ; @param (map) options

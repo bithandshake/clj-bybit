@@ -9,6 +9,8 @@
 ;; ----------------------------------------------------------------------------
 
 (defn receive-kline-item
+  ; @ignore
+  ;
   ; @param (vector) kline-item
   ; [(ms) start
   ;  (string) open
@@ -46,6 +48,8 @@
         :volume          (reader/read-str volume)}))
 
 (defn receive-kline-list
+  ; @ignore
+  ;
   ; @param (map) kline-list-data
   ; {:kline-list (maps in vector)}
   ;

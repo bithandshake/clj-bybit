@@ -6,6 +6,8 @@
 ;; ----------------------------------------------------------------------------
 
 (defn GET-headers
+  ; @ignore
+  ;
   ; @param (map) headers-props
   ; {:api-key (string)
   ;  :api-secret (string)}
@@ -32,6 +34,8 @@
         "X-BAPI-RECV-WINDOW" "5000"}))
 
 (defn POST-headers
+  ; @ignore
+  ;
   ; @param (map) headers-props
   ; {:api-key (string)
   ;  :api-secret (string)}

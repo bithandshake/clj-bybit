@@ -6,6 +6,8 @@
 ;; ----------------------------------------------------------------------------
 
 (defn interval-duration
+  ; @ignore
+  ;
   ; @param (string) interval
   ; "1", "3", "5", "15", "30", "60", "120", "240", "360", "720", "D", "M", "W"
   ;
@@ -20,6 +22,8 @@
                  "360" 21600000 "720" 43200000 "D" 86400000 "M" 1152000000 "W" 6048200000 0)) ; 0 as default
 
 (defn close-time
+  ; @ignore
+  ;
   ; @param (ms) open-time
   ; @param (string) interval
   ; "1", "3", "5", "15", "30", "60", "120", "240", "360", "720", "D", "M", "W"
@@ -34,6 +38,8 @@
   (+ open-time (interval-duration interval)))
 
 (defn query-duration
+  ; @ignore
+  ;
   ; @param (string) interval
   ; "1", "3", "5", "15", "30", "60", "120", "240", "360", "720", "D", "M", "W"
   ; @param (integer) limit
@@ -48,6 +54,8 @@
   (* limit (interval-duration interval)))
 
 (defn query-start
+  ; @ignore
+  ;
   ; @param (string) interval
   ; "1", "3", "5", "15", "30", "60", "120", "240", "360", "720", "D", "M", "W"
   ; @param (integer) limit

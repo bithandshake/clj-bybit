@@ -8,6 +8,8 @@
 ;; ----------------------------------------------------------------------------
 
 (defn position-list-param-string
+  ; @ignore
+  ;
   ; @param (map) param-props
   ; {:api-key (string)
   ;  :base-coin (string)(opt)
@@ -35,6 +37,8 @@
        (str timestamp api-key 5000 query-string)))
 
 (defn position-list-headers
+  ; @ignore
+  ;
   ; @param (map) uri-props
   ; {:base-coin (string)(opt)
   ;   Default: "BTC"

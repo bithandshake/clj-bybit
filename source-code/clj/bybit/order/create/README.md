@@ -12,8 +12,8 @@ Type of derivatives product: "linear" or "option".
 
 ### close-on-trigger?
 
-Close on trigger. To place a closing order, please set it as true, otherwise,
-the order might not be placed due to lack of margins
+To place a closing order, please set it as true, otherwise, the order might not
+be placed due to lack of margins.
 
 ### implied-volatility
 

@@ -8,6 +8,8 @@
 ;; ----------------------------------------------------------------------------
 
 (defn kline-list-query-string
+  ; @ignore
+  ;
   ; @param (map) query-props
   ; {:category (string)
   ;   "inverse", "linear"
@@ -31,6 +33,8 @@
             "&end="      query-end)))
 
 (defn kline-list-uri
+  ; @ignore
+  ;
   ; @param (map) uri-props
   ; {:category (string)
   ;   "inverse", "linear"
@@ -60,6 +64,8 @@
        (str address "/derivatives/v3/public/kline?" query-string)))
 
 (defn kline-list-uri-list
+  ; @ignore
+  ;
   ; @param (map) uri-props
   ; {:category (string)
   ;   "inverse", "linear"

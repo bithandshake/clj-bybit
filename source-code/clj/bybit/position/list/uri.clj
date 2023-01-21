@@ -6,6 +6,8 @@
 ;; ----------------------------------------------------------------------------
 
 (defn position-list-query-string
+  ; @ignore
+  ;
   ; @param (map) query-props
   ; {:base-coin (string)(opt)
   ;   Default: "BTC"
@@ -30,6 +32,8 @@
        "&symbol="    symbol))
 
 (defn position-list-uri
+  ; @ignore
+  ;
   ; @param (map) uri-props
   ; {:base-coin (string)(opt)
   ;   Default: "BTC"

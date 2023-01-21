@@ -6,6 +6,8 @@
 ;; ----------------------------------------------------------------------------
 
 (defn order-create-uri
+  ; @ignore
+  ;
   ; @param (map) uri-props
   ; {:use-mainnet? (boolean)(opt)
   ;   Default: false}

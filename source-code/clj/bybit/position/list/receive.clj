@@ -6,6 +6,8 @@
 ;; ----------------------------------------------------------------------------
 
 (defn receive-position-list
+  ; @ignore
+  ;
   ; @param (map) position-list-data
   ; {:position-list (maps in vector)}
   ;

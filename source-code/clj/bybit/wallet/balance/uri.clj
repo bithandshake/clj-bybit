@@ -6,6 +6,8 @@
 ;; ----------------------------------------------------------------------------
 
 (defn wallet-balance-query-string
+  ; @ignore
+  ;
   ; @param (map) query-props
   ; {:coin (string)(opt)}
   ;
@@ -14,6 +16,8 @@
   (str "coin=" coin))
 
 (defn wallet-balance-uri
+  ; @ignore
+  ;
   ; @param (map) uri-props
   ; {:coin (string)(opt)
   ;  :use-mainnet? (boolean)(opt)

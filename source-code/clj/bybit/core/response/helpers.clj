@@ -9,6 +9,8 @@
 ;; ----------------------------------------------------------------------------
 
 (defn time-now->epoch-ms
+  ; @ignore
+  ;
   ; @param (string) n
   ;
   ; @example
@@ -26,6 +28,8 @@
 ;; ----------------------------------------------------------------------------
 
 (defn GET-response->body
+  ; @ignore
+  ;
   ; @param (map) response
   ; {:body (string)}
   ;
@@ -50,6 +54,8 @@
 ;; ----------------------------------------------------------------------------
 
 (defn POST-response->headers
+  ; @ignore
+  ;
   ; @param (map) response
   ; {:headers (string)}
   ;
@@ -64,6 +70,8 @@
   (return headers))
 
 (defn POST-response->body
+  ; @ignore
+  ;
   ; @param (map) response
   ; {:body (string)}
   ;

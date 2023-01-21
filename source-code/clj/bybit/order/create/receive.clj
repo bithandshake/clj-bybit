@@ -6,6 +6,8 @@
 ;; ----------------------------------------------------------------------------
 
 (defn receive-order-created
+  ; @ignore
+  ;
   ; @param (map) order-created-data
   ; {:order-created (maps in vector)}
   ;

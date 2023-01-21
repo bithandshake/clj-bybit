@@ -6,6 +6,8 @@
 ;; ----------------------------------------------------------------------------
 
 (defn receive-wallet-balance
+  ; @ignore
+  ;
   ; @param (map) wallet-balance-data
   ; {:wallet-balance (maps in vector)}
   ;

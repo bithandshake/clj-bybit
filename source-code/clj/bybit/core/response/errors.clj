@@ -5,6 +5,8 @@
 ;; ----------------------------------------------------------------------------
 
 (defn response-body->error?
+  ; @ignore
+  ;
   ; @param (map) response-body
   ; {:ret-code (integer)}
   ;
@@ -16,6 +18,8 @@
   (not= ret-code 0))
 
 (defn response-body->invalid-api-details?
+  ; @ignore
+  ;
   ; @param (map) response-body
   ; {:ret-code (integer)}
   ;

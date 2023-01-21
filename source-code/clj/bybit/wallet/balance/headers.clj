@@ -8,6 +8,8 @@
 ;; ----------------------------------------------------------------------------
 
 (defn wallet-balance-param-string
+  ; @ignore
+  ;
   ; @param (map) param-props
   ; {:api-key (string)
   ;  :coin (string)(opt)}
@@ -24,6 +26,8 @@
        (str timestamp api-key 5000 query-string)))
 
 (defn wallet-balance-headers
+  ; @ignore
+  ;
   ; @param (map) uri-props
   ; {:api-key (string)
   ;  :api-secret (string)

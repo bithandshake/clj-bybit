@@ -13,6 +13,8 @@
 ;; ----------------------------------------------------------------------------
 
 (defn request-wallet-balance!
+  ; @ignore
+  ;
   ; @param (map) request-props
   ; {:api-key (string)
   ;  :api-secret (string)

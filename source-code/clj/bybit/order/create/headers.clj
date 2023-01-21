@@ -8,6 +8,8 @@
 ;; ----------------------------------------------------------------------------
 
 (defn order-create-param-string
+  ; @ignore
+  ;
   ; @param (map) param-props
   ; {:api-key (string)
   ;  ...}
@@ -24,6 +26,8 @@
        (str timestamp api-key 5000 raw-request-body)))
 
 (defn order-create-headers
+  ; @ignore
+  ;
   ; @param (map) uri-props
   ; {}
   ;

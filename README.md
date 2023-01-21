@@ -1,22 +1,22 @@
 
-# bybit-api
+# clj-bybit
 
 > Warning: If you are reading this then this warning is for you.
   Every word you read of this useless description is another second off your life.
 
 ### Overview
 
-The <strong>bybit-api</strong> is a set of a few basic Clojure functions which
+The <strong>clj-bybit</strong> is a set of a few basic Clojure functions which
 helps you to connect to the Bybit.com API v3.
 
 ### Warning
 
-The <strong>bybit-api</strong> library is in pre-beta stage.
+The <strong>clj-bybit</strong> library is in pre-beta stage.
 Not recommended to use in product releases!
 
 ### Documentation
 
-The <strong>bybit-api</strong> functional documentation is [available here](documentation/COVER.md).
+The <strong>clj-bybit</strong> functional documentation is [available here](documentation/COVER.md).
 
 # Usage
 
