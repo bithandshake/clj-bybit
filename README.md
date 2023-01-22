@@ -1,9 +1,6 @@
 
 # clj-bybit
 
-> Warning: If you are reading this then this warning is for you.
-  Every word you read of this useless description is another second off your life.
-
 ### Overview
 
 The <strong>clj-bybit</strong> is a set of a few basic Clojure functions which
