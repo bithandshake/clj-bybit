@@ -1,7 +1,7 @@
 
 (ns bybit.core.response.helpers
-    (:require [candy.api  :refer [return]]
-              [json.api   :as json]
+    (:require [json.api   :as json]
+              [noop.api   :refer [return]]
               [reader.api :as reader]
               [string.api :as string]))
 

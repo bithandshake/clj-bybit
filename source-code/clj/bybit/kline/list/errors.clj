@@ -1,8 +1,8 @@
 
 (ns bybit.kline.list.errors
     (:require [bybit.kline.list.helpers :as kline.list.helpers]
-              [candy.api                :refer [return]]
-              [loop.api                 :refer [some-indexed]]))
+              [loop.api                 :refer [some-indexed]]
+              [noop.api                 :refer [return]]))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------

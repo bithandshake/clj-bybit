@@ -6,8 +6,8 @@
               [bybit.order.create.headers  :as order.create.headers]
               [bybit.order.create.receive  :as order.create.receive]
               [bybit.order.create.uri      :as order.create.uri]
-              [candy.api                   :refer [return]]
-              [clj-http.client             :as clj-http.client]))
+              [clj-http.client             :as clj-http.client]
+              [noop.api                    :refer [return]]))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
