@@ -1,9 +1,9 @@
 
 (ns bybit.kline.list.receive
-    (:require [bybit.kline.list.helpers :as kline.list.helpers]
-              [reader.api               :as reader]
-              [time.api                 :as time]
-              [vector.api               :as vector]))
+    (:require [bybit.kline.list.utils :as kline.list.utils]
+              [reader.api             :as reader]
+              [time.api               :as time]
+              [vector.api             :as vector]))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
@@ -35,8 +35,9 @@
   ;  :volume (number)}
   [[start open high low close volume _]]
   (let [open-time (reader/read-str start)]
-        ; WARNING! Az aktuális (éppen történő) periódus close-time értéke egy jövőbeni időpontra mutat!
-        ; close-time (kline.list.helpers/close-time start interval)]
+        ; WARNING!
+        ; Close time of the actual ongoing period points to the future!
+        ; close-time (kline.list.utils/close-time start interval)]
        {:open-time       open-time
        ;:close-item      close-time
         :open-timestamp  (time/epoch-ms->timestamp-string open-time)

@@ -1,13 +1,13 @@
 
 (ns bybit.order.create.request
-    (:require [bybit.core.response.errors  :as core.response.errors]
-              [bybit.core.response.helpers :as core.response.helpers]
-              [bybit.order.create.body     :as order.create.body]
-              [bybit.order.create.headers  :as order.create.headers]
-              [bybit.order.create.receive  :as order.create.receive]
-              [bybit.order.create.uri      :as order.create.uri]
-              [clj-http.client             :as clj-http.client]
-              [noop.api                    :refer [return]]))
+    (:require [bybit.core.response.errors :as core.response.errors]
+              [bybit.core.response.utils  :as core.response.utils]
+              [bybit.order.create.body    :as order.create.body]
+              [bybit.order.create.headers :as order.create.headers]
+              [bybit.order.create.receive :as order.create.receive]
+              [bybit.order.create.uri     :as order.create.uri]
+              [clj-http.client            :as clj-http.client]
+              [noop.api                   :refer [return]]))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
@@ -60,12 +60,12 @@
         headers       (order.create.headers/order-create-headers       request-props)
         body          (order.create.body/order-create-raw-request-body request-props)
         response      (clj-http.client/post uri {:body body :headers headers})
-        response-body (core.response.helpers/POST-response->body response)]
+        response-body (core.response.utils/POST-response->body response)]
        response-body))
 
 
         ;response      (clj-http.client/post uri {:form-params form-params :as :x-www-form-urlencoded})
-        ;response-body (core.response.helpers/POST-response->body response)]
+        ;response-body (core.response.utils/POST-response->body response)]
        ;(if (core.response.errors/response-body->error? response-body)
         ;  (return response-body)
         ;  response-body]))

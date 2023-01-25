@@ -52,7 +52,7 @@
 ```
 (defn request-kline-list!
   [{:keys [symbol] :as request-props}]
-  (letfn [(f [result uri] (let [response-body (-> uri clj-http.client/get core.response.helpers/GET-response->body)
+  (letfn [(f [result uri] (let [response-body (-> uri clj-http.client/get core.response.utils/GET-response->body)
                                 kline-list    (-> response-body :result :list)]
                                (if-not (core.response.errors/response-body->error? response-body)
                                        (assoc result :kline-list (vector/concat-items kline-list (:kline-list result))))))]
@@ -139,7 +139,7 @@
         headers       (order.create.headers/order-create-headers       request-props)
         body          (order.create.body/order-create-raw-request-body request-props)
         response      (clj-http.client/post uri {:body body :headers headers})
-        response-body (core.response.helpers/POST-response->body response)]
+        response-body (core.response.utils/POST-response->body response)]
        response-body))
 ```
 
@@ -208,7 +208,7 @@
   (let [uri           (position.list.uri/position-list-uri         request-props)
         headers       (position.list.headers/position-list-headers request-props)
         response      (clj-http.client/get uri {:headers headers})
-        response-body (core.response.helpers/GET-response->body response)]
+        response-body (core.response.utils/GET-response->body response)]
        (if (core.response.errors/response-body->error? response-body)
            (return response-body)
            (-> {:api-key       api-key
@@ -272,7 +272,7 @@
   (let [uri           (wallet.balance.uri/wallet-balance-uri         request-props)
         headers       (wallet.balance.headers/wallet-balance-headers request-props)
         response      (clj-http.client/get uri {:headers headers})
-        response-body (core.response.helpers/GET-response->body response)]
+        response-body (core.response.utils/GET-response->body response)]
        (if (core.response.errors/response-body->error? response-body)
            (return response-body)
            (-> {:api-key        api-key

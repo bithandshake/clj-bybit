@@ -1,5 +1,5 @@
 
-(ns bybit.core.response.helpers
+(ns bybit.core.response.utils
     (:require [json.api   :as json]
               [noop.api   :refer [return]]
               [reader.api :as reader]

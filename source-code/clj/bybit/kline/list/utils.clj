@@ -1,5 +1,5 @@
 
-(ns bybit.kline.list.helpers
+(ns bybit.kline.list.utils
     (:require [time.api :as time]))
 
 ;; ----------------------------------------------------------------------------

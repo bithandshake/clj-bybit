@@ -1,8 +1,8 @@
 
 (ns bybit.kline.list.errors
-    (:require [bybit.kline.list.helpers :as kline.list.helpers]
-              [loop.api                 :refer [some-indexed]]
-              [noop.api                 :refer [return]]))
+    (:require [bybit.kline.list.utils :as kline.list.utils]
+              [loop.api               :refer [some-indexed]]
+              [noop.api               :refer [return]]))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
@@ -27,7 +27,7 @@
                    ; Ha az open-time értéke nem egyenlő az előző elem open-time értékének
                    ; és a periódus hosszának összegével ...
                    (not= (+ (get-in kline-list [(dec dex) :open-time])
-                            (kline.list.helpers/interval-duration (:interval x)))
+                            (kline.list.utils/interval-duration (:interval x)))
                          (:open-time x))
                    (return :time-error/time-slippage)))]
          (some-indexed f kline-list)))

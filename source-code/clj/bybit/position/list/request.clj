@@ -1,7 +1,7 @@
 
 (ns bybit.position.list.request
     (:require [bybit.core.response.errors  :as core.response.errors]
-              [bybit.core.response.helpers :as core.response.helpers]
+              [bybit.core.response.utils   :as core.response.utils]
               [bybit.position.list.headers :as position.list.headers]
               [bybit.position.list.receive :as position.list.receive]
               [bybit.position.list.uri     :as position.list.uri]
@@ -48,7 +48,7 @@
   (let [uri           (position.list.uri/position-list-uri         request-props)
         headers       (position.list.headers/position-list-headers request-props)
         response      (clj-http.client/get uri {:headers headers})
-        response-body (core.response.helpers/GET-response->body response)]
+        response-body (core.response.utils/GET-response->body response)]
        (if (core.response.errors/response-body->error? response-body)
            (return response-body)
            (-> {:api-key       api-key
