@@ -1,6 +1,5 @@
 
-(ns bybit.kline.list.utils
-    (:require [time.api :as time]))
+(ns bybit.kline.list.utils)
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
@@ -52,24 +51,3 @@
   ; @return (ms)
   [interval limit]
   (* limit (interval-duration interval)))
-
-(defn query-start
-  ; @ignore
-  ;
-  ; @param (string) interval
-  ; "1", "3", "5", "15", "30", "60", "120", "240", "360", "720", "D", "M", "W"
-  ; @param (integer) limit
-  ; @param (ms)(opt) epoch-ms
-  ;
-  ; @example
-  ; (query-start "1" 60 1580183600000)
-  ; =>
-  ; 1580180000000
-  ;
-  ; @return (ms)
-  ([interval limit]
-   (- (time/epoch-ms)
-      (query-duration interval limit)))
-
-  ([interval limit epoch-ms]
-   (- epoch-ms (query-duration interval limit))))
