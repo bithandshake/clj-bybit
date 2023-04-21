@@ -17,7 +17,7 @@ The <strong>clj-bybit</strong> functional documentation is [available here](docu
 
 # Usage
 
-> Some functions and some parameters of the following functions won't be discussed.
+> Some parameters of the following functions and some other functions won't be discussed.
   To learn more about the available functionality, check out the
   [functional documentation](documentation/COVER.md)!
 
@@ -26,6 +26,16 @@ The <strong>clj-bybit</strong> functional documentation is [available here](docu
   will be targeted.
 
 > Some of the following functions requires to get an API key from <strong>bybit.com</strong>.
+
+### Index
+
+- [How to get market data?](#how-to-get-market-data)
+
+- [How to create an order?](#how-to-create-an-order)
+
+- [How to get your position list?](#how-to-get-your-position-list)
+
+- [How to get your wallet balance?](#how-to-get-your-wallet-balance)
 
 ### How to get market data?
 
