@@ -11,6 +11,8 @@
 
 - [request-position-list!](#request-position-list)
 
+- [request-quote-ticker!](#request-quote-ticker)
+
 - [request-wallet-balance!](#request-wallet-balance)
 
 ### request-kline-list!
@@ -52,13 +54,19 @@
 ```
 (defn request-kline-list!
   [{:keys [symbol] :as request-props}]
-  (letfn [(f [result uri] (let [response-body (-> uri clj-http.client/get core.response.utils/GET-response->body)
-                                kline-list    (-> response-body :result :list)]
-                               (if-not (core.response.errors/response-body->error? response-body)
-                                       (assoc result :kline-list (vector/concat-items kline-list (:kline-list result))))))]
-         (let [uri-list  (kline.list.uri/kline-list-uri-list request-props)
-               timestamp (time/epoch-ms)]
-              (-> (reduce f {:symbol symbol :uri-list uri-list :time-now timestamp} uri-list)
+  (let [uri-list  (kline.list.uri/kline-list-uri-list request-props)
+        timestamp (time/epoch-ms)]
+       (letfn [(print-f [dex] (if (= dex 0)
+                                  (println        "Fetching kline batch:" (inc dex) "of" (count uri-list) "[max 200 klines / batch]")
+                                  (println "\033[1AFetching kline batch:" (inc dex) "of" (count uri-list) "[max 200 klines / batch]")))
+
+               (f [result dex uri] (if (vector/min? uri-list 2)
+                                       (print-f dex))
+                                   (let [response-body (-> uri clj-http.client/get core.response.utils/GET-response->body)
+                                         kline-list    (-> response-body :result :list)]
+                                        (if-not (core.response.errors/response-body->error? response-body)
+                                                (assoc result :kline-list (vector/concat-items kline-list (:kline-list result))))))]
+              (-> (reduce-kv f {:symbol symbol :uri-list uri-list :time-now timestamp} uri-list)
                   (kline.list.receive/receive-kline-list)))))
 ```
 
@@ -84,34 +92,24 @@
 @param (map) request-props
 {:api-key (string)
  :api-secret (string)
- :base-price (?)(opt)
- :category (string)
-  "linear", "option"
- :close-on-trigger? (boolean)(opt)
-  Default: false
- :implied-volatility (string)(opt)
+ :category (integer)(opt)
+  0 (normal), 1 (TP/SL)
+  Default: 0
  :order-link-id (string)(opt)
+ :order-price (?)(opt)
+  When the order type is "Market", the order price is optional.
  :order-type (string)
-  "Limit", "Market"
- :position-dex (string)(opt)
- :price (?)(opt)
- :protect-market-maker? (boolean)(opt)
-  Default: false
- :quantity (USD)
- :reduce-only? (boolean)(opt)
-  Default: false
+  "Limit", "Limit_maker", "Market"
+ :quantity (?)
  :side (string)
   "Buy", "Sell"
- :sl-trigger-by (string)(opt)
- :stop-loss (?)(opt)
+ :smp-type (string)(opt)
+  "None", "CancelMaker", "CancelTaker", "CancelBoth"
+  Default: "None"
  :symbol (string)
- :take-profit (?)(opt)
- :time-in-force (string)
-  "FillOrKill", "GoodTillCancel", "ImmediateOrCancel", "PostOnly"
- :tp-trigger-by (string)(opt)
- :trigger-by (string)(opt)
-  "Market price", "Mark price"              <----      ez
-  "IndexPrice", "LastPrice", "MarkPrice"    <---- vagy ez
+ :time-in-force (string)(opt)
+  "GTC" (Good Till Cancel), "FOK" (Fill Or Kill), "IOC" (Immediate Or Cancel)
+  Default: "GTC"
  :trigger-price (?)(opt)
  :use-mainnet? (boolean)(opt)
   Default: false}
@@ -119,7 +117,7 @@
 
 ```
 @example
-(request-order-create! {:api-key "..." :api-secret "..." :category "linear" :quantity 100 :symbol "ETHUSDT"})
+(request-order-create! {:api-key "..." :api-secret "..." :side "Buy" :quantity 100 :symbol "ETHUSDT"})
 =>
 {}
 ```
@@ -140,7 +138,9 @@
         body          (order.create.body/order-create-raw-request-body request-props)
         response      (clj-http.client/post uri {:body body :headers headers})
         response-body (core.response.utils/POST-response->body response)]
-       response-body))
+       (if (core.response.errors/response-body->error? response-body)
+           (return response-body)
+           (return response-body))))
 ```
 
 </details>
@@ -234,13 +234,60 @@
 
 ---
 
+### request-quote-ticker!
+
+```
+@param (map) request-props
+{:symbol (string)(opt)}
+```
+
+```
+@example
+(request-quote-ticker! {:symbol "ETHUSDT"})
+=>
+{}
+```
+
+```
+@return (map)
+{}
+```
+
+<details>
+<summary>Source code</summary>
+
+```
+(defn request-quote-ticker!
+  [request-props]
+  (let [uri           (quote.ticker.uri/quote-ticker-uri request-props)
+        response-body (-> uri clj-http.client/get core.response.utils/GET-response->body)]
+       (if (core.response.errors/response-body->error? response-body)
+           (return response-body)
+           (quote.ticker.receive/receive-quote-ticker response-body))))
+```
+
+</details>
+
+<details>
+<summary>Require</summary>
+
+```
+(ns my-namespace (:require [bybit.api :refer [request-quote-ticker!]]))
+
+(bybit.api/request-quote-ticker! ...)
+(request-quote-ticker!           ...)
+```
+
+</details>
+
+---
+
 ### request-wallet-balance!
 
 ```
 @param (map) request-props
 {:api-key (string)
  :api-secret (string)
- :coin (string)(opt)
  :use-mainnet? (boolean)(opt)
   Default: false}
 ```
@@ -298,5 +345,5 @@
 
 ---
 
-This documentation is generated by the [docs-api](https://github.com/bithandshake/docs-api) engine
+This documentation is generated with the [clj-docs-generator](https://github.com/bithandshake/clj-docs-generator) engine.
 
