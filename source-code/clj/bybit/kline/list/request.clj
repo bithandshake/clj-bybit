@@ -41,12 +41,18 @@
   [{:keys [symbol] :as request-props}]
   ; Az api.bybit.com szerver által elfogadott maximális limit érték 200, ezért az annál több
   ; periódust igénylő lekéréseket több részletben küldi el, majd ... dolgozza fel a válaszokat.
-  (letfn [(f [result uri] (let [response-body (-> uri clj-http.client/get core.response.utils/GET-response->body)
-                                kline-list    (-> response-body :result :list)]
-                               (if-not (core.response.errors/response-body->error? response-body)
-                                       (assoc result :kline-list (vector/concat-items kline-list (:kline-list result))))))]
-         (let [uri-list  (kline.list.uri/kline-list-uri-list request-props)
-               timestamp (time/epoch-ms)]
-              (-> (reduce f {:symbol symbol :uri-list uri-list :time-now timestamp} uri-list)
+  (let [uri-list  (kline.list.uri/kline-list-uri-list request-props)
+        timestamp (time/epoch-ms)]
+       (letfn [(print-f [dex] (if (= dex 0)
+                                  (println        "Fetching kline batch:" (inc dex) "of" (count uri-list) "[max 200 klines / batch]")
+                                  (println "\033[1AFetching kline batch:" (inc dex) "of" (count uri-list) "[max 200 klines / batch]")))
+
+               (f [result dex uri] (if (vector/min? uri-list 2)
+                                       (print-f dex))
+                                   (let [response-body (-> uri clj-http.client/get core.response.utils/GET-response->body)
+                                         kline-list    (-> response-body :result :list)]
+                                        (if-not (core.response.errors/response-body->error? response-body)
+                                                (assoc result :kline-list (vector/concat-items kline-list (:kline-list result))))))]
+              (-> (reduce-kv f {:symbol symbol :uri-list uri-list :time-now timestamp} uri-list)
                   (kline.list.receive/receive-kline-list)))))
                  ;(kline.list.errors/kline-list-data<-error request-props)

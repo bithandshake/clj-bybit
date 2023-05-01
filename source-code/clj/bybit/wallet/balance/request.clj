@@ -18,7 +18,6 @@
   ; @param (map) request-props
   ; {:api-key (string)
   ;  :api-secret (string)
-  ;  :coin (string)(opt)
   ;  :use-mainnet? (boolean)(opt)
   ;   Default: false}
   ;

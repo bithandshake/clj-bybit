@@ -9,32 +9,29 @@
   ; @ignore
   ;
   ; @param (map) query-props
-  ; {:coin (string)(opt)}
   ;
   ; @return (string)
-  [{:keys [coin]}]
-  (str "coin=" coin))
+  [_])
 
 (defn wallet-balance-uri
   ; @ignore
   ;
   ; @param (map) uri-props
-  ; {:coin (string)(opt)
-  ;  :use-mainnet? (boolean)(opt)
+  ; {:use-mainnet? (boolean)(opt)
   ;   Default: false}
   ;
   ; @example
   ; (wallet-balance-uri {})
   ; =>
-  ; "https://api-testnet.bybit.com/unified/v3/private/account/wallet/balance"
+  ; "https://api-testnet.bybit.com/spot/v3/private/account"
   ;
   ; @example
   ; (wallet-balance-uri {:use-mainnet? true})
   ; =>
-  ; "https://api.bybit.com/unified/v3/private/account/wallet/balance"
+  ; "https://api.bybit.com/spot/v3/private/account"
   ;
   ; @return (string)
   [{:keys [use-mainnet?] :as uri-props}]
   (let [query-string (wallet-balance-query-string uri-props)
         address      (if use-mainnet? core.uri.config/API-ADDRESS core.uri.config/TEST-API-ADDRESS)]
-       (str address "/unified/v3/private/account/wallet/balance?" query-string)))
+       (str address "/spot/v3/private/account")))
