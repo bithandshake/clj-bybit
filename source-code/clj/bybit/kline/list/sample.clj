@@ -7,4 +7,4 @@
 
 (defn request-my-kline-list!
   []
-  (bybit/request-kline-list! {:interval "1" :limit 60 :symbol "ETHUSDT"}))
+  (bybit/request-kline-list! {:interval "1m" :limit 60 :symbol "ETHUSDT"}))

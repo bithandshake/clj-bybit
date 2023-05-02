@@ -2,12 +2,10 @@
 (ns bybit.kline.list.request
     (:require [bybit.core.response.errors :as core.response.errors]
               [bybit.core.response.utils  :as core.response.utils]
-              [bybit.kline.list.errors    :as kline.list.errors]
               [bybit.kline.list.receive   :as kline.list.receive]
               [bybit.kline.list.uri       :as kline.list.uri]
-              [bybit.kline.list.utils     :as kline.list.utils]
               [clj-http.client            :as clj-http.client]
-              [time.api                   :as time]
+              [noop.api                   :refer [return]]
               [vector.api                 :as vector]))
 
 ;; ----------------------------------------------------------------------------
@@ -15,18 +13,20 @@
 
 (defn request-kline-list!
   ; @param (map) request-props
-  ; {:category (string)(opt)
-  ;   "inverse", "linear"
-  ;  :interval (string)
-  ;   "1", "3", "5", "15", "30", "60", "120", "240", "360", "720", "D", "M", "W"
-  ;  :limit (integer)
-  ;  :start (ms)(opt)
+  ; {:interval (string)
+  ;   "1m", "3m", "5m", "15m", "30m", "1h", "2h", "4h", "6h", "12h", "1d", "1w"
+  ;  :limit (integer)(opt)
+  ;   Default: 1000
+  ;  :start (string)(opt)
   ;  :symbol (string)
   ;  :use-mainnet? (boolean)(opt)
   ;   Default: false}
   ;
+  ; @usage
+  ; (request-kline-list! {:interval "1m" :limit 60 :symbol "ETHUSDT" :start "2020-04-20T00:00:00.000Z"})
+  ;
   ; @example
-  ; (request-kline-list! {:interval "1" :limit 60 :symbol "ETHUSDT"})
+  ; (request-kline-list! {:interval "1m" :limit 60 :symbol "ETHUSDT"})
   ; =>
   ; {:high 2420 :low 2160 :symbol "ETHUSDT" :time-now "..." :kline-list [{...} {...}] :uri-list ["..." "..."]}
   ;
@@ -39,20 +39,18 @@
   ;  :time-now (integer)
   ;  :uri-list (strings in vector)}
   [{:keys [symbol] :as request-props}]
-  ; Az api.bybit.com szerver által elfogadott maximális limit érték 200, ezért az annál több
-  ; periódust igénylő lekéréseket több részletben küldi el, majd ... dolgozza fel a válaszokat.
-  (let [uri-list  (kline.list.uri/kline-list-uri-list request-props)
-        timestamp (time/epoch-ms)]
+  ; The api.bybit.com serves at most 1000 kline per request therefore if the limit
+  ; is higher than 1000 this function sends multiple requests.
+  (let [{:keys [generated-at uri-list]} (kline.list.uri/kline-list-uri-list request-props)]
        (letfn [(print-f [dex] (if (= dex 0)
-                                  (println        "Fetching kline batch:" (inc dex) "of" (count uri-list) "[max 200 klines / batch]")
-                                  (println "\033[1AFetching kline batch:" (inc dex) "of" (count uri-list) "[max 200 klines / batch]")))
+                                  (println        "Fetching kline batch:" (inc dex) "of" (count uri-list) "[max 1000 klines / batch]")
+                                  (println "\033[1AFetching kline batch:" (inc dex) "of" (count uri-list) "[max 1000 klines / batch]")))
 
-               (f [result dex uri] (if (vector/min? uri-list 2)
-                                       (print-f dex))
+               (f [result dex uri] (print-f dex)
                                    (let [response-body (-> uri clj-http.client/get core.response.utils/GET-response->body)
                                          kline-list    (-> response-body :result :list)]
                                         (if-not (core.response.errors/response-body->error? response-body)
-                                                (assoc result :kline-list (vector/concat-items kline-list (:kline-list result))))))]
-              (-> (reduce-kv f {:symbol symbol :uri-list uri-list :time-now timestamp} uri-list)
+                                                (assoc result :kline-list (vector/concat-items (:kline-list result) kline-list))
+                                                (return response-body))))]
+              (-> (reduce-kv f {:symbol symbol :uri-list uri-list :time-now (time.api/epoch-ms->timestamp-string generated-at)} uri-list)
                   (kline.list.receive/receive-kline-list)))))
-                 ;(kline.list.errors/kline-list-data<-error request-props)

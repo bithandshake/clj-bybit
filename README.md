@@ -46,7 +46,7 @@ In the following example the function requests the latest 60 1 minute long perio
 data from the ETH/USDT market.
 
 ```
-(request-kline-list! {:interval "1" :limit 60 :symbol "ETHUSDT"})
+(request-kline-list! {:interval "1m" :limit 60 :symbol "ETHUSDT"})
 ```
 
 ### How to create an order?
