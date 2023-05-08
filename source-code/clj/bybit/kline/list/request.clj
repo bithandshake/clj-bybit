@@ -17,6 +17,7 @@
   ;   "1m", "3m", "5m", "15m", "30m", "1h", "2h", "4h", "6h", "12h", "1d", "1w"
   ;  :limit (integer)(opt)
   ;   Default: 1000
+  ;  :print-status? (boolean)(opt)
   ;  :start (string)(opt)
   ;  :symbol (string)
   ;  :use-mainnet? (boolean)(opt)
@@ -38,7 +39,7 @@
   ;  :symbol (string)
   ;  :time-now (integer)
   ;  :uri-list (strings in vector)}
-  [{:keys [symbol] :as request-props}]
+  [{:keys [print-status? symbol] :as request-props}]
   ; The api.bybit.com serves at most 1000 kline per request therefore if the limit
   ; is higher than 1000 this function sends multiple requests.
   (let [{:keys [generated-at uri-list]} (kline.list.uri/kline-list-uri-list request-props)]
@@ -46,7 +47,7 @@
                                   (println        "Fetching kline batch:" (inc dex) "of" (count uri-list) "[max 1000 klines / batch]")
                                   (println "\033[1AFetching kline batch:" (inc dex) "of" (count uri-list) "[max 1000 klines / batch]")))
 
-               (f [result dex uri] (print-f dex)
+               (f [result dex uri] (if print-status? (print-f dex))
                                    (let [response-body (-> uri clj-http.client/get core.response.utils/GET-response->body)
                                          kline-list    (-> response-body :result :list)]
                                         (if-not (core.response.errors/response-body->error? response-body)
