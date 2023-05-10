@@ -5,6 +5,8 @@
 
 ### Index
 
+- [interval-duration-ms](#interval-duration-ms)
+
 - [request-kline-list!](#request-kline-list)
 
 - [request-order-create!](#request-order-create)
@@ -15,24 +17,73 @@
 
 - [request-wallet-balance!](#request-wallet-balance)
 
+### interval-duration-ms
+
+```
+@param (string) interval
+"1m", "3m", "5m", "15m", "30m", "1h", "2h", "4h", "6h", "12h", "1d", "1w"
+```
+
+```
+@example
+(interval-duration-ms "1m")
+=>
+60000
+```
+
+```
+@return (ms)
+```
+
+<details>
+<summary>Source code</summary>
+
+```
+(defn interval-duration-ms
+  [interval]
+  (case interval "1m" 60000 "3m" 180000 "5m" 300000 "15m" 900000 "30m" 1800000 "1h" 3600000 "2h" 7200000 "4h" 14400000
+                 "6h" 21600000 "12h" 43200000 "1d" 86400000 "1w" 6048200000 0))
+```
+
+</details>
+
+<details>
+<summary>Require</summary>
+
+```
+(ns my-namespace (:require [bybit.api :refer [interval-duration-ms]]))
+
+(bybit.api/interval-duration-ms ...)
+(interval-duration-ms           ...)
+```
+
+</details>
+
+---
+
 ### request-kline-list!
 
 ```
 @param (map) request-props
-{:category (string)(opt)
-  "inverse", "linear"
- :interval (string)
-  "1", "3", "5", "15", "30", "60", "120", "240", "360", "720", "D", "M", "W"
- :limit (integer)
- :start (ms)(opt)
+{:interval (string)
+  "1m", "3m", "5m", "15m", "30m", "1h", "2h", "4h", "6h", "12h", "1d", "1w"
+ :limit (integer)(opt)
+  Default: 1000
+ :print-status? (boolean)(opt)
+ :start (string)(opt)
  :symbol (string)
  :use-mainnet? (boolean)(opt)
   Default: false}
 ```
 
 ```
+@usage
+(request-kline-list! {:interval "1m" :limit 60 :symbol "ETHUSDT" :start "2020-04-20T00:00:00.000Z"})
+```
+
+```
 @example
-(request-kline-list! {:interval "1" :limit 60 :symbol "ETHUSDT"})
+(request-kline-list! {:interval "1m" :limit 60 :symbol "ETHUSDT"})
 =>
 {:high 2420 :low 2160 :symbol "ETHUSDT" :time-now "..." :kline-list [{...} {...}] :uri-list ["..." "..."]}
 ```
@@ -53,20 +104,19 @@
 
 ```
 (defn request-kline-list!
-  [{:keys [symbol] :as request-props}]
-  (let [uri-list  (kline.list.uri/kline-list-uri-list request-props)
-        timestamp (time/epoch-ms)]
+  [{:keys [print-status? symbol] :as request-props}]
+  (let [{:keys [generated-at uri-list]} (kline.list.uri/kline-list-uri-list request-props)]
        (letfn [(print-f [dex] (if (= dex 0)
-                                  (println        "Fetching kline batch:" (inc dex) "of" (count uri-list) "[max 200 klines / batch]")
-                                  (println "\033[1AFetching kline batch:" (inc dex) "of" (count uri-list) "[max 200 klines / batch]")))
+                                  (println        "Fetching kline batch:" (inc dex) "of" (count uri-list) "[max 1000 klines / batch]")
+                                  (println "\033[1AFetching kline batch:" (inc dex) "of" (count uri-list) "[max 1000 klines / batch]")))
 
-               (f [result dex uri] (if (vector/min? uri-list 2)
-                                       (print-f dex))
+               (f [result dex uri] (if print-status? (print-f dex))
                                    (let [response-body (-> uri clj-http.client/get core.response.utils/GET-response->body)
                                          kline-list    (-> response-body :result :list)]
                                         (if-not (core.response.errors/response-body->error? response-body)
-                                                (assoc result :kline-list (vector/concat-items kline-list (:kline-list result))))))]
-              (-> (reduce-kv f {:symbol symbol :uri-list uri-list :time-now timestamp} uri-list)
+                                                (assoc result :kline-list (vector/concat-items (:kline-list result) kline-list))
+                                                (return response-body))))]
+              (-> (reduce-kv f {:symbol symbol :uri-list uri-list :time-now (time.api/epoch-ms->timestamp-string generated-at)} uri-list)
                   (kline.list.receive/receive-kline-list)))))
 ```
 
