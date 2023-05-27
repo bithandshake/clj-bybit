@@ -41,14 +41,7 @@
   ; @return (map)
   ; {}
   [{:keys [body]}]
-  ; XXX#0147
-  ; A reader/string->mixed függvény ...
-  ; ... nem szereti így: {\"my-key\":\"My value\", ...}
-  ; ... így szereti:     {\"my-key\" \"My value\", ...}
-  (-> (string/replace-part body #"\":" "\" ")
-      (reader/string->mixed)
-      (json/keywordize-keys)
-      (json/snake-case-keys)))
+  (-> body reader/json->map json/keywordize-keys json/snake-case-keys))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
@@ -83,8 +76,4 @@
   ; @return (map)
   ; {}
   [{:keys [body]}]
-  ; XXX#0147
-  (-> (string/replace-part body #"\":" "\" ")
-      (reader/string->mixed)
-      (json/keywordize-keys)
-      (json/hyphenize-keys)))
+  (-> body reader/json->map json/keywordize-keys json/hyphenize-keys))
