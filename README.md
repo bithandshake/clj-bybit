@@ -3,8 +3,8 @@
 
 ### Overview
 
-The <strong>clj-bybit</strong> is a set of a few basic Clojure functions that
-help you to connect to the Bybit.com API v3.
+The <strong>clj-bybit</strong> is a set of Clojure functions that help you to connect
+to the Bybit.com API v3.
 
 ### Warning
 
