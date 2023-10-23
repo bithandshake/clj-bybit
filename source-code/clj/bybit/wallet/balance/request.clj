@@ -6,7 +6,6 @@
               [bybit.wallet.balance.receive :as wallet.balance.receive]
               [bybit.wallet.balance.uri     :as wallet.balance.uri]
               [clj-http.client              :as clj-http.client]
-              [noop.api                     :refer [return]]
               [time.api                     :as time]))
 
 ;; ----------------------------------------------------------------------------
@@ -39,8 +38,8 @@
         headers       (wallet.balance.headers/wallet-balance-headers request-props)
         response      (clj-http.client/get uri {:headers headers})
         response-body (core.response.utils/GET-response->body response)]
-       (if (core.response.errors/response-body->error? response-body)
-           (return response-body)
+       (if (-> response-body core.response.errors/response-body->error?)
+           (-> response-body)
            (-> {:api-key        api-key
                 :uri            uri
                 :time-now       (time/epoch-s)

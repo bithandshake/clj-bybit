@@ -115,7 +115,7 @@
                                          kline-list    (-> response-body :result :list)]
                                         (if-not (core.response.errors/response-body->error? response-body)
                                                 (assoc result :kline-list (vector/concat-items (:kline-list result) kline-list))
-                                                (return response-body))))]
+                                                (-> response-body))))]
               (-> (reduce-kv f {:symbol symbol :uri-list uri-list :time-now (time.api/epoch-ms->timestamp-string generated-at)} uri-list)
                   (kline.list.receive/receive-kline-list)))))
 ```
@@ -189,8 +189,8 @@
         response      (clj-http.client/post uri {:body body :headers headers})
         response-body (core.response.utils/POST-response->body response)]
        (if (core.response.errors/response-body->error? response-body)
-           (return response-body)
-           (return response-body))))
+           (-> response-body)
+           (-> response-body))))
 ```
 
 </details>
@@ -260,7 +260,7 @@
         response      (clj-http.client/get uri {:headers headers})
         response-body (core.response.utils/GET-response->body response)]
        (if (core.response.errors/response-body->error? response-body)
-           (return response-body)
+           (-> response-body)
            (-> {:api-key       api-key
                 :uri           uri
                 :position-list (-> response-body :result :list)
@@ -309,11 +309,11 @@
 ```
 (defn request-quote-ticker!
   [request-props]
-  (let [uri           (quote.ticker.uri/quote-ticker-uri request-props)
+  (let [uri           (-> request-propsquote.ticker.uri/quote-ticker-uri)
         response-body (-> uri clj-http.client/get core.response.utils/GET-response->body)]
-       (if (core.response.errors/response-body->error? response-body)
-           (return response-body)
-           (quote.ticker.receive/receive-quote-ticker response-body))))
+       (if (-> response-body core.response.errors/response-body->error?)
+           (-> response-body)
+           (-> response-body quote.ticker.receive/receive-quote-ticker))))
 ```
 
 </details>
@@ -370,8 +370,8 @@
         headers       (wallet.balance.headers/wallet-balance-headers request-props)
         response      (clj-http.client/get uri {:headers headers})
         response-body (core.response.utils/GET-response->body response)]
-       (if (core.response.errors/response-body->error? response-body)
-           (return response-body)
+       (if (-> response-body core.response.errors/response-body->error?)
+           (-> response-body)
            (-> {:api-key        api-key
                 :uri            uri
                 :time-now       (time/epoch-s)

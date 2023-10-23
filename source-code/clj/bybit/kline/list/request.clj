@@ -5,7 +5,6 @@
               [bybit.kline.list.receive   :as kline.list.receive]
               [bybit.kline.list.uri       :as kline.list.uri]
               [clj-http.client            :as clj-http.client]
-              [noop.api                   :refer [return]]
               [vector.api                 :as vector]))
 
 ;; ----------------------------------------------------------------------------
@@ -52,6 +51,6 @@
                                          kline-list    (-> response-body :result :list)]
                                         (if-not (core.response.errors/response-body->error? response-body)
                                                 (assoc result :kline-list (vector/concat-items (:kline-list result) kline-list))
-                                                (return response-body))))]
+                                                (-> response-body))))]
               (-> (reduce-kv f {:symbol symbol :uri-list uri-list :time-now (time.api/epoch-ms->timestamp-string generated-at)} uri-list)
                   (kline.list.receive/receive-kline-list)))))

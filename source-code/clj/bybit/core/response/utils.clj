@@ -1,7 +1,6 @@
 
 (ns bybit.core.response.utils
     (:require [json.api   :as json]
-              [noop.api   :refer [return]]
               [reader.api :as reader]
               [string.api :as string]))
 
@@ -59,8 +58,8 @@
   ;
   ; @return (map)
   ; {}
-  [{:keys [headers]}]
-  (return headers))
+  [response]
+  (:headers response))
 
 (defn POST-response->body
   ; @ignore

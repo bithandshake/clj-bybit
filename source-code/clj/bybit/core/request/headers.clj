@@ -1,6 +1,7 @@
 
 (ns bybit.core.request.headers
-    (:require [hash.api :as hash]))
+    (:require [buddy.core.codecs]
+              [buddy.core.mac]))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
@@ -26,7 +27,7 @@
   [{:keys [api-key api-secret]} param-string timestamp]
   ; Please make sure that your timestamp is in sync with our (bybit.com) server time.
   ; You can use the Server Time endpoint.
-  (let [sign (hash/hmac-sha256 param-string api-secret)]
+  (let [sign (-> param-string str (buddy.core.mac/hash {:key api-secret :alg :hmac+sha256}) buddy.core.codecs/bytes->hex)]
        {"X-BAPI-SIGN-TYPE"   "2"
         "X-BAPI-SIGN"        sign
         "X-BAPI-API-KEY"     api-key
@@ -55,7 +56,7 @@
   [{:keys [api-key api-secret]} param-string timestamp]
   ; Please make sure that your timestamp is in sync with our (bybit.com) server time.
   ; You can use the Server Time endpoint.
-  (let [sign (hash/hmac-sha256 param-string api-secret)]
+  (let [sign (-> param-string str (buddy.core.mac/hash {:key api-secret :alg :hmac+sha256}) buddy.core.codecs/bytes->hex)]
        {"X-BAPI-SIGN-TYPE"   "2"
         "X-BAPI-SIGN"        sign
         "X-BAPI-API-KEY"     api-key

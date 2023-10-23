@@ -1,7 +1,5 @@
 
-(ns bybit.core.request.body
-    (:require [hash.api :as hash]
-              [noop.api :refer [return]]))
+(ns bybit.core.request.body)
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
@@ -36,8 +34,8 @@
   ; @return (string)
   [items]
   (letfn [(f [result [name value]]
-             (if value (str    result (if result ", ") (raw-request-body-item name value))
-                       (return result)))]
+             (if value (str result (if result ", ") (raw-request-body-item name value))
+                       (->  result)))]
          (let [raw-body (reduce f nil items)]
               (str "{"raw-body"}"))))
 

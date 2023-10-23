@@ -6,7 +6,6 @@
               [bybit.position.list.receive :as position.list.receive]
               [bybit.position.list.uri     :as position.list.uri]
               [clj-http.client             :as clj-http.client]
-              [noop.api                    :refer [return]]
               [time.api                    :as time]))
 
 ;; ----------------------------------------------------------------------------
@@ -50,7 +49,7 @@
         response      (clj-http.client/get uri {:headers headers})
         response-body (core.response.utils/GET-response->body response)]
        (if (core.response.errors/response-body->error? response-body)
-           (return response-body)
+           (-> response-body)
            (-> {:api-key       api-key
                 :uri           uri
                 :position-list (-> response-body :result :list)

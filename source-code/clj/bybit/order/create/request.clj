@@ -5,8 +5,7 @@
               [bybit.order.create.body    :as order.create.body]
               [bybit.order.create.headers :as order.create.headers]
               [bybit.order.create.uri     :as order.create.uri]
-              [clj-http.client            :as clj-http.client]
-              [noop.api                   :refer [return]]))
+              [clj-http.client            :as clj-http.client]))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
@@ -51,5 +50,5 @@
         response      (clj-http.client/post uri {:body body :headers headers})
         response-body (core.response.utils/POST-response->body response)]
        (if (core.response.errors/response-body->error? response-body)
-           (return response-body)
-           (return response-body))))
+           (-> response-body)
+           (-> response-body))))
