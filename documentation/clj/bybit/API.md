@@ -309,7 +309,7 @@
 ```
 (defn request-quote-ticker!
   [request-props]
-  (let [uri           (-> request-propsquote.ticker.uri/quote-ticker-uri)
+  (let [uri           (-> request-props quote.ticker.uri/quote-ticker-uri)
         response-body (-> uri clj-http.client/get core.response.utils/GET-response->body)]
        (if (-> response-body core.response.errors/response-body->error?)
            (-> response-body)
