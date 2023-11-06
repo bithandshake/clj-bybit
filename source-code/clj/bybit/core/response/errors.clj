@@ -15,7 +15,7 @@
   ;
   ; @return (boolean)
   [{:keys [ret-code]}]
-  (not= ret-code 0))
+  (-> ret-code zero? not))
 
 (defn response-body->invalid-api-details?
   ; @ignore

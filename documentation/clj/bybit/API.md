@@ -1,5 +1,9 @@
 
-# bybit.api Clojure namespace
+### bybit.api
+
+Functional documentation of the bybit.api Clojure namespace
+
+---
 
 ##### [README](../../../README.md) > [DOCUMENTATION](../../COVER.md) > bybit.api
 
@@ -16,6 +20,8 @@
 - [request-quote-ticker!](#request-quote-ticker)
 
 - [request-wallet-balance!](#request-wallet-balance)
+
+---
 
 ### interval-duration-ms
 
@@ -106,7 +112,7 @@
 (defn request-kline-list!
   [{:keys [print-status? symbol] :as request-props}]
   (let [{:keys [generated-at uri-list]} (kline.list.uri/kline-list-uri-list request-props)]
-       (letfn [(print-f [dex] (if (= dex 0)
+       (letfn [(print-f [dex] (if (zero? dex)
                                   (println        "Fetching kline batch:" (inc dex) "of" (count uri-list) "[max 1000 klines / batch]")
                                   (println "\033[1AFetching kline batch:" (inc dex) "of" (count uri-list) "[max 1000 klines / batch]")))
 
@@ -395,5 +401,5 @@
 
 ---
 
-This documentation is generated with the [clj-docs-generator](https://github.com/bithandshake/clj-docs-generator) engine.
+<sub>This documentation is generated with the [clj-docs-generator](https://github.com/bithandshake/clj-docs-generator) engine.</sub>
 

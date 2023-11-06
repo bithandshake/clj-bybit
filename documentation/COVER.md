@@ -1,7 +1,11 @@
 
-# clj-bybit documentation
+### clj-bybit
 
-Documentation of the [clj-bybit](https://github.com/bithandshake/clj-bybit) Clojure library
+Functional documentation of the [clj-bybit](https://github.com/bithandshake/clj-bybit) Clojure library
+
+---
+
+
 
 ##### [README](../README.md) > DOCUMENTATION
 
@@ -11,5 +15,5 @@ Documentation of the [clj-bybit](https://github.com/bithandshake/clj-bybit) Cloj
 
 ---
 
-This documentation is generated with the [clj-docs-generator](https://github.com/bithandshake/clj-docs-generator) engine.
+<sub>This documentation is generated with the [clj-docs-generator](https://github.com/bithandshake/clj-docs-generator) engine.</sub>
 

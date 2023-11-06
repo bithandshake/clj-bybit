@@ -42,7 +42,7 @@
   ; The api.bybit.com serves at most 1000 kline per request therefore if the limit
   ; is higher than 1000 this function sends multiple requests.
   (let [{:keys [generated-at uri-list]} (kline.list.uri/kline-list-uri-list request-props)]
-       (letfn [(print-f [dex] (if (= dex 0)
+       (letfn [(print-f [dex] (if (zero? dex)
                                   (println        "Fetching kline batch:" (inc dex) "of" (count uri-list) "[max 1000 klines / batch]")
                                   (println "\033[1AFetching kline batch:" (inc dex) "of" (count uri-list) "[max 1000 klines / batch]")))
 
