@@ -17,11 +17,11 @@
   ; =>
   ; 1645550000123
   ;
-  ; @return (integer)
+  ; @return (ms)
   [n]
   (let [s  (string/before-first-occurence n "." {:return? false})
         ms (string/after-first-occurence  n "." {:return? false})]
-       (reader/read-str (str s (subs ms 0 3)))))
+       (reader/read-edn (str s (subs ms 0 3)))))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
@@ -40,7 +40,7 @@
   ; @return (map)
   ; {}
   [{:keys [body]}]
-  (-> body reader/json->map json/keywordize-keys json/snake-case-keys))
+  (-> body reader/read-json json/keywordize-keys json/snake-case-keys))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
@@ -75,4 +75,4 @@
   ; @return (map)
   ; {}
   [{:keys [body]}]
-  (-> body reader/json->map json/keywordize-keys json/hyphenize-keys))
+  (-> body reader/read-json json/keywordize-keys json/hyphenize-keys))

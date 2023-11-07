@@ -39,11 +39,11 @@
   ; Close time of the actual ongoing period points to the future!
   {:open-time      t
    :open-timestamp (time/epoch-ms->timestamp-string t)
-   :close          (reader/read-str c)
-   :open           (reader/read-str o)
-   :high           (reader/read-str h)
-   :low            (reader/read-str l)
-   :volume         (reader/read-str v)})
+   :close          (reader/read-edn c)
+   :open           (reader/read-edn o)
+   :high           (reader/read-edn h)
+   :low            (reader/read-edn l)
+   :volume         (reader/read-edn v)})
 
 (defn receive-kline-list
   ; @ignore
@@ -61,8 +61,8 @@
   [{:keys [kline-list] :as kline-list-data}]
   (letfn [(f [{:keys [total-high total-low] :as result}
               {:keys [h l]                  :as kline-item}]
-             (let [high (reader/read-str h)
-                   low  (reader/read-str l)]
+             (let [high (reader/read-edn h)
+                   low  (reader/read-edn l)]
                   (-> result (assoc  :total-high (max (or total-high high) high))
                              (assoc  :total-low  (min (or total-low  low)  low))
                              (update :kline-list vector/conj-item (receive-kline-item kline-item)))))]

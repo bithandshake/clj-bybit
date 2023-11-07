@@ -16,15 +16,13 @@ The <strong>clj-bybit</strong> functional documentation is [available here](docu
 
 # Usage
 
-> Some parameters of the following functions and some other functions won't be discussed.
-  To learn more about the available functionality, check out the
-  [functional documentation](documentation/COVER.md)!
+> Some parameters of the following functions and some further functions are not discussed in this file.
+  To learn more about the available functionality, check out the [functional documentation](documentation/COVER.md)!
 
 > All the following functions take the {:use-mainnet? ...} setting, which provides
-  you the choice of whether the `api-testnet.bybit.com` or the `api.bybit.com`
-  will be targeted.
+  you the choice of whether the `api-testnet.bybit.com` or the `api.bybit.com` will be targeted.
 
-> Some of the following functions requires to get an API key from <strong>bybit.com</strong>.
+> Some of the following functions requires to get your API key from <strong>bybit.com</strong>.
 
 ### Index
 
