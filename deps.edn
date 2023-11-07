@@ -5,4 +5,6 @@
                                    :sha     "debf8b6ee95bd0b6eb55287e4de86bc8c4f58f2c"}
          bithandshake/cljc-time   {:git/url "https://github.com/bithandshake/cljc-time"
                                    :sha     "9d3aa0414b2e5ecbdeeb12b9ea956f40fb4d332b"}
-         buddy/buddy-core         {:mvn/version "1.10.1"}}}
+         buddy/buddy-core         {:mvn/version "1.10.1"}
+         org.clojure/clojure      {:mvn/version "1.10.1"}}}
+         
