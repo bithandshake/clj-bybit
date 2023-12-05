@@ -110,23 +110,23 @@
        ; ... the URI list expands with a URI.
        ; ... the limit decreases with 1000.
        ; ... the offset increase with a duration of 1000 interval.
-       (letfn [(f [uri-list limit offset-ms]
-                  (if (> limit 1000)
+       (letfn [(f0 [uri-list limit offset-ms]
+                   (if (> limit 1000)
 
-                      ; If the limit is greater than 1000 ...
-                      (let [query-duration-ms (kline.list.utils/query-duration-ms interval 1000)
-                            query-start-ms    (+ query-list-start-ms offset-ms)
-                            uri-props         (merge uri-props {:limit 1000 :start-ms query-start-ms})]
-                           (f (conj uri-list (kline-list-uri uri-props))
-                              (- limit 1000)
-                              (+ offset-ms query-duration-ms)))
+                       ; If the limit is greater than 1000 ...
+                       (let [query-duration-ms (kline.list.utils/query-duration-ms interval 1000)
+                             query-start-ms    (+ query-list-start-ms offset-ms)
+                             uri-props         (merge uri-props {:limit 1000 :start-ms query-start-ms})]
+                            (f0 (conj uri-list (kline-list-uri uri-props))
+                                (- limit 1000)
+                                (+ offset-ms query-duration-ms)))
 
-                      ; If the limit is NOT greater than 1000 ...
-                      (let [query-duration-ms (kline.list.utils/query-duration-ms interval limit)
-                            query-start-ms    (+ query-list-start-ms offset-ms)
-                            uri-props      (merge uri-props {:limit limit :start-ms query-start-ms})]
-                           (conj uri-list (kline-list-uri uri-props)))))]
+                       ; If the limit is NOT greater than 1000 ...
+                       (let [query-duration-ms (kline.list.utils/query-duration-ms interval limit)
+                             query-start-ms    (+ query-list-start-ms offset-ms)
+                             uri-props      (merge uri-props {:limit limit :start-ms query-start-ms})]
+                            (conj uri-list (kline-list-uri uri-props)))))]
 
               ; ...
               {:generated-at time-now
-               :uri-list (f [] limit 0)})))
+               :uri-list (f0 [] limit 0)})))

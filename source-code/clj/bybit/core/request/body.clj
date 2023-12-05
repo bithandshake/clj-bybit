@@ -33,10 +33,10 @@
   ;
   ; @return (string)
   [items]
-  (letfn [(f [result [name value]]
-             (if value (str result (if result ", ") (raw-request-body-item name value))
-                       (->  result)))]
-         (let [raw-body (reduce f nil items)]
+  (letfn [(f0 [result [name value]]
+              (if value (str result (if result ", ") (raw-request-body-item name value))
+                        (->  result)))]
+         (let [raw-body (reduce f0 nil items)]
               (str "{"raw-body"}"))))
 
 ;; ----------------------------------------------------------------------------

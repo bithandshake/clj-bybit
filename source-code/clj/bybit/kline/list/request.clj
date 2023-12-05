@@ -39,18 +39,18 @@
   ;  :time-now (integer)
   ;  :uri-list (strings in vector)}
   [{:keys [print-status? symbol] :as request-props}]
-  ; The api.bybit.com serves at most 1000 kline per request therefore if the limit
-  ; is higher than 1000 this function sends multiple requests.
+  ; The 'api.bybit.com' serves a maximum of 1000 klines per request. Therefore, if the limit
+  ; is higher than 1000, this function sends multiple requests.
   (let [{:keys [generated-at uri-list]} (kline.list.uri/kline-list-uri-list request-props)]
        (letfn [(print-f [dex] (if (zero? dex)
                                   (println        "Fetching kline batch:" (inc dex) "of" (count uri-list) "[max 1000 klines / batch]")
                                   (println "\033[1AFetching kline batch:" (inc dex) "of" (count uri-list) "[max 1000 klines / batch]")))
 
-               (f [result dex uri] (if print-status? (print-f dex))
-                                   (let [response-body (-> uri clj-http.client/get core.response.utils/GET-response->body)
-                                         kline-list    (-> response-body :result :list)]
-                                        (if-not (core.response.errors/response-body->error? response-body)
-                                                (assoc result :kline-list (vector/concat-items (:kline-list result) kline-list))
-                                                (-> response-body))))]
-              (-> (reduce-kv f {:symbol symbol :uri-list uri-list :time-now (time.api/epoch-ms->timestamp-string generated-at)} uri-list)
+               (f0 [result dex uri] (if print-status? (print-f dex))
+                                    (let [response-body (-> uri clj-http.client/get core.response.utils/GET-response->body)
+                                          kline-list    (-> response-body :result :list)]
+                                         (if-not (core.response.errors/response-body->error? response-body)
+                                                 (assoc result :kline-list (vector/concat-items (:kline-list result) kline-list))
+                                                 (-> response-body))))]
+              (-> (reduce-kv f0 {:symbol symbol :uri-list uri-list :time-now (time.api/epoch-ms->timestamp-string generated-at)} uri-list)
                   (kline.list.receive/receive-kline-list)))))
