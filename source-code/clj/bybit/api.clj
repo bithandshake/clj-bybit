@@ -10,20 +10,20 @@
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
 
-; bybit.kline.list.request
+; @redirect (bybit.kline.list.request)
 (def request-kline-list! kline.list.request/request-kline-list!)
 
-; bybit.kline.list.utils
+; @redirect (bybit.kline.list.utils)
 (def interval-duration-ms kline.list.utils/interval-duration-ms)
 
-; bybit.order.create.request
+; @redirect (bybit.order.create.request)
 (def request-order-create! order.create.request/request-order-create!)
 
-; bybit.position.list.request
+; @redirect (bybit.position.list.request)
 (def request-position-list! position.list.request/request-position-list!)
 
-; bybit.quote.ticker.request
+; @redirect (bybit.quote.ticker.request)
 (def request-quote-ticker! quote.ticker.request/request-quote-ticker!)
 
-; bybit.wallet.balance.request
+; @redirect (bybit.wallet.balance.request)
 (def request-wallet-balance! wallet.balance.request/request-wallet-balance!)

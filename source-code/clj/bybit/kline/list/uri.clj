@@ -20,15 +20,15 @@
   ;
   ; @return (string)
   [{:keys [start-ms interval limit symbol] :or {limit 1000}}]
-  ; E.g. start: "2022-04-20T04:20:42.000Z"
-  ;      limit: 5
-  ;      interval: "1m"
-  ;      =>
-  ;      query-start-ms: 1650428442000
-  ;      query-end-ms:   1650428682000 (+ 4 min not 5!)
-  ;      =>
-  ;      first kline starts: "2022-04-20T04:20:00.000Z" (04:20:00 -> 04:21:00)
-  ;      last kline starts:  "2022-04-20T04:24:00.000Z" (04:24:00 -> 04:25:00)
+  ; E.g., start: "2022-04-20T04:20:42.000Z"
+  ;       limit: 5
+  ;       interval: "1m"
+  ;       =>
+  ;       query-start-ms: 1650428442000
+  ;       query-end-ms:   1650428682000 (+ 4 min not 5!)
+  ;       =>
+  ;       first kline starts: "2022-04-20T04:20:00.000Z" (04:20:00 -> 04:21:00)
+  ;       last kline starts:  "2022-04-20T04:24:00.000Z" (04:24:00 -> 04:25:00)
   (let [query-start-ms       start-ms
         query-duration-ms    (kline.list.utils/query-duration-ms interval limit)
         interval-duration-ms (kline.list.utils/interval-duration-ms interval)
