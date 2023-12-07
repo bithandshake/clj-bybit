@@ -5,7 +5,7 @@
               [bybit.kline.list.receive   :as kline.list.receive]
               [bybit.kline.list.uri       :as kline.list.uri]
               [clj-http.client            :as clj-http.client]
-              [vector.api                 :as vector]))
+              [fruits.vector.api          :as vector]))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------

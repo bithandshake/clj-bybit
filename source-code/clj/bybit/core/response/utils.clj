@@ -1,8 +1,8 @@
 
 (ns bybit.core.response.utils
-    (:require [json.api   :as json]
-              [reader.api :as reader]
-              [string.api :as string]))
+    (:require [fruits.json.api   :as json]
+              [fruits.reader.api :as reader]
+              [fruits.string.api :as string]))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
