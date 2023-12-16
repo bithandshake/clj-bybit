@@ -12,7 +12,7 @@ Not recommended to use in product releases!
 
 ### Documentation
 
-The <strong>clj-bybit</strong> functional documentation is [available here](documentation/COVER.md).
+The <strong>clj-bybit</strong> functional documentation is [available here](https://bithandshake.github.io/clj-bybit).
 
 # Usage
 
