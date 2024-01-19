@@ -21,7 +21,7 @@
   [n]
   (let [s  (string/before-first-occurence n "." {:return? false})
         ms (string/after-first-occurence  n "." {:return? false})]
-       (reader/read-edn (str s (subs ms 0 3)))))
+       (reader/parse-edn (str s (subs ms 0 3)))))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
@@ -40,7 +40,7 @@
   ; @return (map)
   ; {}
   [{:keys [body]}]
-  (-> body reader/read-json json/keywordize-keys json/snake-case-keys))
+  (-> body reader/parse-json json/keywordize-keys json/kebab-case-keys))
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
@@ -75,4 +75,4 @@
   ; @return (map)
   ; {}
   [{:keys [body]}]
-  (-> body reader/read-json json/keywordize-keys json/hyphenize-keys))
+  (-> body reader/parse-json json/keywordize-keys json/hyphenize-keys))
