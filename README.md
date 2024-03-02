@@ -3,13 +3,13 @@
 
 ### Overview
 
-The <strong>clj-bybit</strong> is a simple Clojure API adapter for bybit.com (API v3).
+The <strong>clj-bybit-com-api</strong> is a simple Clojure API adapter for bybit.com (API v3).
 
 ### deps.edn
 
 ```
-{:deps {bithandshake/clj-bybit-com-api {:git/url "https://github.com/bithandshake/clj-bybit-com-api"
-                                        :sha     "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}}}
+{:deps {mt-api-adapters/clj-bybit-com-api {:git/url "https://github.com/mt-api-adapters/clj-bybit-com-api"
+                                           :sha     "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}}}
 ```
 
 ### Warning
@@ -19,7 +19,7 @@ Consider using it at your own risk!
 
 ### Documentation
 
-The <strong>clj-bybit-com-api</strong> functional documentation is [available here](https://bithandshake.github.io/clj-bybit-com-api).
+The <strong>clj-bybit-com-api</strong> functional documentation is [available here](https://mt-api-adapters.github.io/clj-bybit-com-api).
 
 ### Changelog
 
