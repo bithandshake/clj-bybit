@@ -3,7 +3,7 @@
 
 ### Overview
 
-The <strong>clj-bybit-com-api</strong> is a simple Clojure API adapter for bybit.com (API v3).
+The <strong>clj-bybit-com-api</strong> is a simple Clojure adapter for the bybit.com API (v3).
 
 ### deps.edn
 

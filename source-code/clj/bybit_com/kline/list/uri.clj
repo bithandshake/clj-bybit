@@ -72,7 +72,7 @@
   ; @ignore
   ;
   ; @description
-  ; The maximum kline limit in Bybit.com queries is 1000.
+  ; The maximum kline limit in [bybit.com](https://bybit.com) queries is 1000.
   ; This function generates a URI list for multiple queries to make possible to
   ; query more than 1000 kline at a time.
   ;

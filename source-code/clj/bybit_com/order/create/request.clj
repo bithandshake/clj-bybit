@@ -15,7 +15,7 @@
   ; This function is incomplete and may not behave as expected.
   ;
   ; @description
-  ; Sends a market order to the bybit.com API.
+  ; Sends a market order to the [bybit.com](https://bybit.com) API.
   ;
   ; @param (map) request-props
   ; {:api-key (string)

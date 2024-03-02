@@ -16,7 +16,7 @@
   ; This function is incomplete and may not behave as expected.
   ;
   ; @description
-  ; Fetches the user's wallet balance from the bybit.com API.
+  ; Fetches the user's wallet balance from the [bybit.com](https://bybit.com) API.
   ;
   ; @param (map) request-props
   ; {:api-key (string)

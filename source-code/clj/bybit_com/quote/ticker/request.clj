@@ -14,7 +14,7 @@
   ; This function is incomplete and may not behave as expected.
   ;
   ; @description
-  ; Fetches a quote ticker from the bybit.com API.
+  ; Fetches a quote ticker from the [bybit.com](https://bybit.com) API.
   ;
   ; @param (map) request-props
   ; {:symbol (string)(opt)}

@@ -15,7 +15,7 @@
   ; This function is incomplete and may not behave as expected.
   ;
   ; @description
-  ; Fetches market data from the bybit.com API.
+  ; Fetches market data from the [bybit.com](https://bybit.com) API.
   ;
   ; @param (map) request-props
   ; {:interval (string)
