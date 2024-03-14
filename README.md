@@ -17,10 +17,10 @@ The <strong>clj-bybit-com-api</strong> is a simple Clojure adapter for the bybit
 The <strong>clj-bybit-com-api</strong> library is in pre-beta stage.
 Consider using it at your own risk!
 
-### Documentation
-
-The <strong>clj-bybit-com-api</strong> functional documentation is [available here](https://mt-api-adapters.github.io/clj-bybit-com-api).
-
 ### Changelog
 
 You can track the changes of the <strong>clj-bybit-com-api</strong> library [here](CHANGES.md).
+
+# Documentation
+
+The <strong>clj-bybit-com-api</strong> functional documentation is [available here](https://mt-api-adapters.github.io/clj-bybit-com-api).

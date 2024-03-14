@@ -97,7 +97,7 @@
   ;  :uri-list (strings in vector)}
   [{:keys [interval limit start] :as uri-props :or {limit 1000}}]
   ; This function generates a URI list for querying klines.
-  ; - If you don't pass the 'start' value the time range starts at (present - duration)
+  ; - If you do not pass the 'start' value the time range starts at (present - duration)
   ;   and ends in the present.
   ; - If you pass the 'start' value the time range starts at the given value
   ;   and ends at (start + duration).
