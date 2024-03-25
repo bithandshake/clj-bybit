@@ -4,6 +4,6 @@
          mt-utilities/cljc-fruits {:git/url "https://github.com/mt-utilities/cljc-fruits"
                                    :sha     "6b5c9c060bdff84d0cd0bce908b64b268e5e6f0e"}
          mt-utilities/cljc-time   {:git/url "https://github.com/mt-utilities/cljc-time"
-                                   :sha     "46082e5ba96db821e2027e3a5d1dfbc3ae445705"}
+                                   :sha     "8db2176097de29ad68b26d5da1d6a90996f8dd42"}
          buddy/buddy-core         {:mvn/version "1.10.1"}
          org.clojure/clojure      {:mvn/version "1.10.1"}}}
