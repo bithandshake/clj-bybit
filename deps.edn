@@ -2,8 +2,8 @@
 {:paths ["source-code/clj"]
  :deps  {clj-http/clj-http        {:mvn/version "3.12.3"}
          bithandshake/cljc-fruits {:git/url "https://github.com/bithandshake/cljc-fruits"
-                                   :sha     "d29c314aa255da9ab37db81122072b19ff59027e"}
+                                   :sha     "a8b054558a9c01459581b4d2887bb7ee7b5ff1e2"}
          mt-utilities/cljc-time   {:git/url "https://github.com/mt-utilities/cljc-time"
-                                   :sha     "13c937dbbbf946bddba03dbd48f182536d915dd4"}
+                                   :sha     "a724344f99fd9ebff6bf7317517c6284628d9e0f"}
          buddy/buddy-core         {:mvn/version "1.10.1"}
          org.clojure/clojure      {:mvn/version "1.10.1"}}}
