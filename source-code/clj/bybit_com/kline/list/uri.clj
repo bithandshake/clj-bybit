@@ -109,7 +109,7 @@
        ; In every iteration ...
        ; ... the URI list expands with a URI.
        ; ... the limit decreases with 1000.
-       ; ... the offset increase with a duration of 1000 interval.
+       ; ... the offset increases with a duration of 1000 interval.
        (letfn [(f0 [uri-list limit offset-ms]
                    (if (> limit 1000)
 
